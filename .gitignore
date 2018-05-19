@@ -103,3 +103,4 @@ ENV/
 
 # dataset
 data/
+.data/
