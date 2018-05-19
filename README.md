@@ -7,45 +7,33 @@
 * PyTorch 1.0
 * Python >= 3.6.1
 
+
 ## 목차
 
-1. [딥러닝과 파이토치](01-Deep-Learning-And-PyTorch)
-
-  딥러닝의 기본 지식을 쌓고 파이토치의 장단점에 대해 알아봅니다.
+1. [딥러닝과 파이토치](01-Deep-Learning-And-PyTorch) - 딥러닝의 기본 지식을 쌓고 파이토치의 장단점에 대해 알아봅니다.
   * [개념] 신경망의 원리
   * [개념] 딥러닝과 신경망
   * [개념] 왜 파이토치인가?
-
-2. [파이토치 시작하기](02-Getting-Started-With-PyTorch)
-
-  파이토치 환경설정과 사용법을 익혀봅니다.
+2. [파이토치 시작하기](02-Getting-Started-With-PyTorch) - 파이토치 환경설정과 사용법을 익혀봅니다
   * [프로젝트 1] 파이토치 설치 & 환경구성
   * [프로젝트 2] 파이토치 예제 내려받고 실행해보기
   * [프로젝트 3] 토치비전과 토치텍스트로 데이터셋 불러오기
-
-3. [파이토치로 구현하는 신경망](03-Coding-Neural-Networks-In-PyTorch)
-
-  파이토치를 이용하여 가장 기본적인 신경망을 만들어봅니다.
+3. [파이토치로 구현하는 신경망](03-Coding-Neural-Networks-In-PyTorch) - 파이토치를 이용하여 가장 기본적인 신경망을 만들어봅니다.
   * [개념] 텐서와 Autograd
   * [Hello World] 신경망 모델 구현하기
   * [Hello World] 모델 저장, 재사용
-
-4. [딥러닝으로 패션 아이템 구분하기](04-Neural-Network-For-Fashion)
-
-  Fashion MNIST 데이터셋과 앞서 배운 인공신경망을 이용하여 패션아이템을 구분해봅니다.
+4. [딥러닝으로 패션 아이템 구분하기](04-Neural-Network-For-Fashion) - Fashion MNIST 데이터셋과 앞서 배운 인공신경망을 이용하여 패션아이템을 구분해봅니다.
   * [개념] Fashion MNIST 데이터셋 설명
   * [프로젝트 1] [Fashion MNIST 학습하기](04-Neural-Network-For-Fashion/4-fasion-mnist.ipynb)
   * [팁] 성능 측정법 알아보기 (Train/Validation/Test)
   * [프로젝트 2] Dropout
   * 더 보기
-
 5. [이미지 인식능력이 탁월한 CNN](05-CNN-For-Image-Classification)
   * [개념] CNN 기초
   * [프로젝트 1] 모델 구현하기
   * [프로젝트 2] 컬러 데이터셋에 적용하기
   * [팁] 토치비전으로 복잡한 모델 사용하기
   * 더 보기
-
 6. [신경망 깊게 쌓아보기](06-Getting-Deeper) - CNN의 발전사와 함께 발전된 형태의 모델들을 알아봅니다.  
   * [개념] 복잡한 CNN모델들
   * [개념 or 프로젝트] Alexnet
@@ -79,6 +67,15 @@
   * [팁] 설치와 환경설정
   * [프로젝트 1] 딥러닝으로 자동차 조종하기
   * 더 보기
+
+## 참여하기
+
+**`중요!`** 모든 코드는 주피터 노트북 파일인 `.ipynb`로 쓰여져야 합니다.
+
+주피터 노트북으로 작성 후 `compile_notebook.py`를 실행시키면 주석과 코드 모두 파이썬 파일로 예쁘게 변환됩니다.
+
+일반 파이썬 포멧으로 쓰여진 `.py` 파일은 변환과정에서 삭제될 수 있으니 주의바랍니다.
+
 
 ## 참고
 
