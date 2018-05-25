@@ -46,22 +46,25 @@
   * [프로젝트 1] 오토인코더로 이미지의 특징을 압축해보기
   * [프로젝트 2] Latent 공간 탐험하기
   * 더 보기
-8. [경쟁을 통해 성장하는 GAN](08-Generative-Adversarial-Networks) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
-  * [개념] GAN 기초
-  * [프로젝트 1] GAN으로 새로운 패션아이템 생성하기
-  * [프로젝트 2] Conditional GAN으로 생성 컨트롤하기
-  * 더 보기
-9. [순차적인 데이터를 처리하는 RNN](09-RNN-For-Sequential-Data) - RNN을 활용하여 영화 리뷰 감정 분석과 기계번역을 해봅니다
+8. [순차적인 데이터를 처리하는 RNN](08-RNN-For-Sequential-Data) - RNN을 활용하여 영화 리뷰 감정 분석과 기계번역을 해봅니다
   * [개념] RNN 기초
   * [프로젝트 1] 영화 리뷰 감정 분석
   * [프로젝트 2] Seq2Seq 기계 번역
   * 더 보기
-10. [주어진 환경과 상호작용을 통해 성장하는 DQN](10-DQN-Learns-From-Environment) - 간단한 게임환경 안에서 스스로 성장하는 DQN 에이전트를 만들어봅니다.
+9. [딥러닝 해킹하기](09-Hacking-Deep-Learning) - Adversarial Attack
+  * [개념] Adversarial Attack 이란?
+  * [프로젝트 1] FGSM 공격
+10. [경쟁을 통해 성장하는 GAN](10-Generative-Adversarial-Networks) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
+  * [개념] GAN 기초
+  * [프로젝트 1] GAN으로 새로운 패션아이템 생성하기
+  * [프로젝트 2] Conditional GAN으로 생성 컨트롤하기
+  * 더 보기
+11. [주어진 환경과 상호작용을 통해 성장하는 DQN](11-DQN-Learns-From-Environment) - 간단한 게임환경 안에서 스스로 성장하는 DQN 에이전트를 만들어봅니다.
   * [개념] 강화학습과 DQN기초
   * [팁] OpenAI Gym
   * [프로젝트 1] 카트폴 게임 마스터하기
   * 더 보기
-11. [간단한 자율주행차 만들기](11-Mini-Self-Driving-Car) - 앞서 배운 CNN, RNN, 그리고 DQN을 활용하여 간단한 자율주행차를 만들어봅니다.
+12. [A2C로 간단한 자율주행 해보기](12-A2C-Self-Driving) - A2C알고리즘을 활용하여 간단한 자율주행차를 만들어봅니다.
   * [개념] 자율주행차란?
   * [팁] 자율주행 시뮬레이터 소개
   * [팁] 설치와 환경설정
