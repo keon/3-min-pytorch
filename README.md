@@ -51,8 +51,8 @@
   * 더 보기
 9. [경쟁을 통해 성장하는 GAN](09-Generative-Adversarial-Networks) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
   * [개념] GAN 기초
-  * [프로젝트 1] GAN으로 새로운 패션아이템 생성하기
-  * [프로젝트 2] Conditional GAN으로 생성 컨트롤하기
+  * [프로젝트 1] [GAN으로 새로운 패션아이템 생성하기](09-Generative-Adversarial-Networks/01-gan.ipynb)
+  * [프로젝트 2] [Conditional GAN으로 생성 컨트롤하기](09-Generative-Adversarial-Networks/02-conditional-gan.ipynb)
   * 더 보기
 10. [주어진 환경과 상호작용을 통해 성장하는 DQN](10-DQN-Learns-From-Environment) - 간단한 게임환경 안에서 스스로 성장하는 DQN 에이전트를 만들어봅니다.
   * [개념] 강화학습과 DQN기초
