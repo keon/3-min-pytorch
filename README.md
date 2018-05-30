@@ -23,7 +23,7 @@
   * [Hello World] 신경망 모델 구현하기
   * [Hello World] 모델 저장, 재사용
 4. [딥러닝으로 패션 아이템 구분하기](04-Neural-Network-For-Fashion) - Fashion MNIST 데이터셋과 앞서 배운 인공신경망을 이용하여 패션아이템을 구분해봅니다.
-  * [개념] [Fashion MNIST 데이터셋 설명](04-Neural-Network-For-Fashion/01-fasion-mnist.ipynb)
+  * [개념] [Fashion MNIST 데이터셋 설명](04-Neural-Network-For-Fashion/01-fashion-mnist.ipynb)
   * [프로젝트 1] [Fashion MNIST 학습하기](04-Neural-Network-For-Fashion/02-neural-network.ipynb)
   * [팁] 성능 측정법 알아보기 (Train/Validation/Test)
   * [프로젝트 2] [오버피팅과 정규화](04-Neural-Network-For-Fashion/03-overfitting-and-regularization.ipynb)
