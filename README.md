@@ -26,7 +26,7 @@
   * [개념] [Fashion MNIST 데이터셋 설명](04-Neural-Network-For-Fashion/01-fasion-mnist.ipynb)
   * [프로젝트 1] [Fashion MNIST 학습하기](04-Neural-Network-For-Fashion/02-neural-network.ipynb)
   * [팁] 성능 측정법 알아보기 (Train/Validation/Test)
-  * [프로젝트 2] [오버피팅과 정규화](04-Neural-Network-For-Fashion/02-overfitting-and-regularization.ipynb)
+  * [프로젝트 2] [오버피팅과 정규화](04-Neural-Network-For-Fashion/03-overfitting-and-regularization.ipynb)
   * 더 보기
 5. [이미지 인식능력이 탁월한 CNN](05-CNN-For-Image-Classification)
   * [개념] CNN 기초
@@ -34,39 +34,32 @@
   * [프로젝트 2] [컬러 데이터셋에 적용하기](05-CNN-For-Image-Classification/02-cifar-cnn.ipynb)
   * [팁] [토치비전으로 복잡한 모델 사용하기](05-CNN-For-Image-Classification/03-torcivision-models.ipynb)
   * 더 보기
-6. [신경망 깊게 쌓아보기](06-Getting-Deeper) - CNN의 발전사와 함께 발전된 형태의 모델들을 알아봅니다.  
-  * [개념] 복잡한 CNN모델들
-  * [개념 or 프로젝트] Alexnet
-  * [개념 or 프로젝트] Residual Networks (ResNet)
-  * [개념 or 프로젝트] Inception
-  * [프로젝트] High Level API 사용법 익히기
-  * 더 보기
-7. [사람의 지도 없이 학습하는 Autoencoder](07-Autoencoder) - 레이블이 없는 상태서 특징추출을 하는 오토인코더에 대해 배워봅니다.
+6. [사람의 지도 없이 학습하는 Autoencoder](06-Autoencoder) - 레이블이 없는 상태서 특징추출을 하는 오토인코더에 대해 배워봅니다.
   * [개념] 오토인코더 기초
-  * [프로젝트 1] 오토인코더로 이미지의 특징을 압축해보기
+  * [프로젝트 1] [오토인코더로 이미지의 특징을 압축해보기](06-Autoencoder/01-autoencoder.ipynb)
   * [프로젝트 2] Latent 공간 탐험하기
   * 더 보기
-8. [순차적인 데이터를 처리하는 RNN](08-RNN-For-Sequential-Data) - RNN을 활용하여 영화 리뷰 감정 분석과 기계번역을 해봅니다
+7. [순차적인 데이터를 처리하는 RNN](07-RNN-For-Sequential-Data) - RNN을 활용하여 영화 리뷰 감정 분석과 기계번역을 해봅니다
   * [개념] RNN 기초
-  * [프로젝트 1] 영화 리뷰 감정 분석
-  * [프로젝트 2] Seq2Seq 기계 번역
+  * [프로젝트 1] [영화 리뷰 감정 분석](07-RNN-For-Sequential-Data/01-text-classification.ipynb)
+  * [프로젝트 2] [Seq2Seq 기계 번역](07-RNN-For-Sequential-Data/02-sequence-to-sequence.ipynb)
   * 더 보기
-9. [딥러닝 해킹하기](09-Hacking-Deep-Learning) - Adversarial Attack
+8. [딥러닝 해킹하기](08-Hacking-Deep-Learning) - Adversarial Attack
   * [개념] Adversarial Attack 이란?
-  * [프로젝트 1] FGSM 공격
-  * [프로젝트 2] 타겟을 정해 공격하기
+  * [프로젝트 1] [FGSM 공격](08-Hacking-Deep-Learning/01-fgsm-attack.ipynb)
+  * [프로젝트 2] [타겟을 정해 공격하기](08-Hacking-Deep-Learning/02-iterative-target-attack.ipynb)
   * 더 보기
-10. [경쟁을 통해 성장하는 GAN](10-Generative-Adversarial-Networks) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
+9. [경쟁을 통해 성장하는 GAN](09-Generative-Adversarial-Networks) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
   * [개념] GAN 기초
   * [프로젝트 1] GAN으로 새로운 패션아이템 생성하기
   * [프로젝트 2] Conditional GAN으로 생성 컨트롤하기
   * 더 보기
-11. [주어진 환경과 상호작용을 통해 성장하는 DQN](11-DQN-Learns-From-Environment) - 간단한 게임환경 안에서 스스로 성장하는 DQN 에이전트를 만들어봅니다.
+10. [주어진 환경과 상호작용을 통해 성장하는 DQN](10-DQN-Learns-From-Environment) - 간단한 게임환경 안에서 스스로 성장하는 DQN 에이전트를 만들어봅니다.
   * [개념] 강화학습과 DQN기초
   * [팁] OpenAI Gym
-  * [프로젝트 1] 카트폴 게임 마스터하기
+  * [프로젝트 1] [카트폴 게임 마스터하기](10-DQN-Learns-From-Environment/01-cartpole-dqn.ipynb)
   * 더 보기
-12. [A2C로 간단한 자율주행 해보기](12-A2C-Self-Driving) - A2C알고리즘을 활용하여 간단한 자율주행차를 만들어봅니다.
+11. [간단한 자율주행 해보기](11-A2C-Self-Driving) - A2C알고리즘을 활용하여 간단한 자율주행차를 만들어봅니다.
   * [개념] 자율주행차란?
   * [팁] 자율주행 시뮬레이터 소개
   * [팁] 설치와 환경설정
