@@ -80,7 +80,7 @@ model = Feed_forward_nn(2, 5)
 learning_rate = 0.003
 criterion = torch.nn.BCELoss()
 epochs = 1000
-optimizer = torch.optim.SGD(model.parameters(), lr = learning_rate)
+optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
 # 러닝레이트는 쉽게 말해 얼마나 급하게 학습을 시키고 싶은지
 # 정해주는 값이라고 할 수 있습니다. 너무 크게 값을 설정해 버리면 모델이 오차의 최소점을 지나치게 되고, 값이 너무 작으면
 # 학습이 느려집니다.
