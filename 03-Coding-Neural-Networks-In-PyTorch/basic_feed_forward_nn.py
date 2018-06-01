@@ -67,12 +67,12 @@ class Feed_forward_nn(torch.nn.Module):
 			self.linear_1 = torch.nn.Linear(self.input_size, self.hidden_size)
 			self.relu = torch.nn.ReLU()
 			self.linear_2 = torch.nn.Linear(self.hidden_size, 1)
-			self.softmax = torch.nn.Sigmoid()
+			self.sigmoid = torch.nn.Sigmoid()
 		def forward(self, input_tensor):
 			linear1 = self.linear_1(input_tensor)
 			relu = self.relu(linear1)
 			linear2 = self.linear_2(relu)
-			output = self.softmax(linear2)
+			output = self.sigmoid(linear2)
 			return output
 
 #Train our Model
@@ -82,7 +82,8 @@ model = Feed_forward_nn(2, 5)
 learning_rate = 0.003
 criterion = torch.nn.BCELoss()
 epochs = 1000
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+
 # 러닝레이트는 쉽게 말해 얼마나 급하게 학습을 시키고 싶은지
 # 정해주는 값이라고 할 수 있습니다. 너무 크게 값을 설정해 버리면 모델이 오차의 최소점을 지나치게 되고, 값이 너무 작으면
 # 학습이 느려집니다.
@@ -98,10 +99,12 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 
 #Performance of the model before training
+model.eval()
 test_loss_before = criterion(torch.squeeze(model(x_tes) ), y_tes)
 print('Before Training, test loss is ', test_loss_before)
 
 for epoch in range(epochs):
+	model.train()
 	optimizer.zero_grad()
 	train_output = model(x_tra)
 	train_output = torch.squeeze(train_output)
@@ -110,6 +113,7 @@ for epoch in range(epochs):
 	optimizer.step()
 
 #Performance of the model before training
+model.eval()
 test_loss = criterion(torch.squeeze(model(x_tes) ), y_tes) 
 print('After Training, test loss is ', test_loss)
 
