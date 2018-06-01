@@ -4,7 +4,6 @@ from sklearn.datasets import make_blobs
 import matplotlib.pyplot as plot
 
 
-
 ##인공신경망을 이용해 간단한 분류 모델 구현하기
 #분류 설명
 
@@ -31,7 +30,6 @@ y_tes = label_map(y_tes, [2, 3], 1)
 # [1,-1]벡터 혹은 [-1,1]벡터 가까이 있으면 반대로 1 이라고 레이블링 해 주었습니다. 이러한 패턴을 보이는 
 # 데이터를 통틀어 'XOR 패턴의 데이터'라고 합니다. 이번 장에서 우리의 목표는 XOR 패턴의 데이터를 분류하는 간단한 인공신경망을 구현해 보는 겁니다.
 #------------------------------------------------------------------------------------------------------------------------------
-
 #For Data visualizeation purpose---------------------------------------------------------------------------------------------
 #Matplotlib 라이브러리를 사용해 밑의 코드를 실행시켜 보면 데이터가 어느 패턴을 보이는지 한 눈에 볼 수 있습니다.
 def vis_data(x,y = None, c = 'r'):
@@ -47,7 +45,6 @@ plot.figure()
 vis_data(x_tra, y_tra, c='r')
 plot.show()
 #------------------------------------------------------------------------------------------------------------------------------
-
 #Turn Data Set to Pytorch tensors
 #모델을 구현하기 전, 위에서 정의한 데이터들을 넘파이 리스트가 아닌 파이토치 텐서로 재정의 합니다.
 x_tra = torch.FloatTensor(x_tra)
@@ -55,7 +52,6 @@ x_tes = torch.FloatTensor(x_tes)
 y_tra = torch.FloatTensor(y_tra)
 y_tes = torch.FloatTensor(y_tes)
 #-------------------------------------------------------------------------
-
 #Our first Neural Network Model
 # 자, 그럼 매우 간단한 인공신경망을 구현해 보겠습니다. 파이토치에서는 인공신경망을 하나의 파이썬 객체(Object)로 나타낼 수 있습니다.
 # __init__()에선 인공신경망 속에 필요한 행렬곱, 활성화 함수, 그리고 그 외 다른 계산식들을 함수로 정의합니다.
@@ -97,12 +93,10 @@ optimizer = torch.optim.SGD(model.parameters(), lr = learning_rate)
 # 는 쉽게 말해 총 몇번 학습을 시키고 싶은지 정해주는 값입니다. 즉, 위의 코드에선 '총 1000 번 오차의 최소값의 방향으로
 # 움직이겠다' 라고 선언한 것입니다.
 
-
-
 #Performance of the model before training
 model.eval()
 test_loss_before = criterion(torch.squeeze(model(x_tes) ), y_tes)
-print('Before Training, test loss is ', test_loss_before)
+print('Before Training, test loss is ', test_loss_before.item())
 
 for epoch in range(epochs):
 	model.train()
@@ -116,7 +110,7 @@ for epoch in range(epochs):
 #Performance of the model before training
 model.eval()
 test_loss = criterion(torch.squeeze(model(x_tes) ), y_tes) 
-print('After Training, test loss is ', test_loss)
+print('After Training, test loss is ', test_loss.item())
 
 #Additional model test
 inf_tensor = torch.FloatTensor([1,1])
