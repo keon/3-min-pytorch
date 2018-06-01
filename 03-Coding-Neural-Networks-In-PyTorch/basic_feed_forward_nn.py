@@ -2,7 +2,7 @@ import torch
 import numpy
 from sklearn.datasets import make_blobs
 import matplotlib.pyplot as plot
-
+import torch.nn.functional as F
 
 ##인공신경망을 이용해 간단한 분류 모델 구현하기
 #분류 설명
@@ -49,8 +49,8 @@ plot.show()
 #모델을 구현하기 전, 위에서 정의한 데이터들을 넘파이 리스트가 아닌 파이토치 텐서로 재정의 합니다.
 x_tra = torch.FloatTensor(x_tra)
 x_tes = torch.FloatTensor(x_tes)
-y_tra = torch.FloatTensor(y_tra)
-y_tes = torch.FloatTensor(y_tes)
+y_tra = torch.LongTensor(y_tra)
+y_tes = torch.LongTensor(y_tes)
 #-------------------------------------------------------------------------
 #Our first Neural Network Model
 # 자, 그럼 매우 간단한 인공신경망을 구현해 보겠습니다. 파이토치에서는 인공신경망을 하나의 파이썬 객체(Object)로 나타낼 수 있습니다.
@@ -64,23 +64,22 @@ class Feed_forward_nn(torch.nn.Module):
 			self.hidden_size  = hidden_size
 			self.linear_1 = torch.nn.Linear(self.input_size, self.hidden_size)
 			self.relu = torch.nn.ReLU()
-			self.linear_2 = torch.nn.Linear(self.hidden_size, 1)
-			self.sigmoid = torch.nn.Sigmoid()
+			self.linear_2 = torch.nn.Linear(self.hidden_size, 2)
 		def forward(self, input_tensor):
 			linear1 = self.linear_1(input_tensor)
 			relu = self.relu(linear1)
 			linear2 = self.linear_2(relu)
-			output = self.sigmoid(linear2)
-			return output
+			# output = self.sigmoid(linear2)
+			return linear2
 
 #Train our Model
 # 자, 이제 학습시킬 인공신경망도 있으니 학습에 필요한 러닝레이트(Learning Rate),
 # 오차(Loss), 이포씨(Epoch), 그리고 최적화 알고리즘(Optimizer)을 정의합니다. 
 model = Feed_forward_nn(2, 5)
-learning_rate = 0.003
-criterion = torch.nn.BCELoss()
+learning_rate = 0.03
+# criterion = F.cross_entropy()
 epochs = 1000
-optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
+optimizer = torch.optim.SGD(model.parameters(), lr = learning_rate)
 # 러닝레이트는 쉽게 말해 얼마나 급하게 학습을 시키고 싶은지
 # 정해주는 값이라고 할 수 있습니다. 너무 크게 값을 설정해 버리면 모델이 오차의 최소점을 지나치게 되고, 값이 너무 작으면
 # 학습이 느려집니다.
@@ -95,21 +94,21 @@ optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
 
 #Performance of the model before training
 model.eval()
-test_loss_before = criterion(torch.squeeze(model(x_tes) ), y_tes)
+test_loss_before = F.cross_entropy(torch.squeeze(model(x_tes) ), y_tes)
 print('Before Training, test loss is ', test_loss_before.item())
 
 for epoch in range(epochs):
 	model.train()
 	optimizer.zero_grad()
 	train_output = model(x_tra)
-	train_output = torch.squeeze(train_output)
-	train_loss = criterion(train_output, y_tra)
+	# train_output = torch.squeeze(train_output)
+	train_loss = F.cross_entropy(train_output, y_tra)
 	train_loss.backward()
 	optimizer.step()
 
 #Performance of the model before training
 model.eval()
-test_loss = criterion(torch.squeeze(model(x_tes) ), y_tes) 
+test_loss = F.cross_entropy(torch.squeeze(model(x_tes) ), y_tes) 
 print('After Training, test loss is ', test_loss.item())
 
 #Additional model test
