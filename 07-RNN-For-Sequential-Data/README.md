@@ -49,7 +49,7 @@ RNN은 배열 속 벡터들의 상관관계와 순서정보를 학습하여
 가 ‘시간에 따른 역전파 알고리즘(Backpropagation Through Time)’을 명확히 정의함으로써 완성되었고,
 현재는 LSTM(Long Short Term Memory), GRU(Gated Recurrent Unit) 등
 새로운 형태의 RNN이 발명되었습니다.
-이러한 순환신경망들은 텍스트 감정 분석(Text Sentiment Analysis),
+이러한 RNN들은 텍스트 감정 분석(Text Sentiment Analysis),
 기계 번역(Machine Translation), 이미지 캡셔닝(Image Captioning)
 등의 다양한 분야에 활발하게 적용되고 있습니다.
 
