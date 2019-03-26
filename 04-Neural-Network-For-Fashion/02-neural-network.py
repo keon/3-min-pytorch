@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # # 4.2 뉴럴넷으로 패션 아이템 구분하기
@@ -16,7 +16,7 @@ USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 
 
-EPOCHS = 20
+EPOCHS = 30
 BATCH_SIZE = 64
 
 
@@ -57,7 +57,7 @@ test_loader = torch.utils.data.DataLoader(
 # `x.size()`를 해보면 `[64, 1, 28, 28]`이라고 표시되는 것을 보실 수 있습니다.
 # Fashion MNIST에서 이미지의 크기는 28 x 28, 색은 흑백으로 1 가지 입니다.
 # 그러므로 입력 x의 총 특성값 갯수는 28 x 28 x 1, 즉 784개 입니다.
-# 우리가 사용할 모델은 3개의 레이어를 가진 뉴럴네트워크 입니다. 
+# 우리가 사용할 모델은 3개의 레이어를 가진 인공신경망 입니다. 
 
 class Net(nn.Module):
     def __init__(self):
@@ -85,7 +85,7 @@ model        = Net().to(DEVICE)
 optimizer    = optim.SGD(model.parameters(), lr=0.01)
 
 
-# ## 훈련하기
+# ## 학습하기
 
 def train(model, train_loader, optimizer, epoch):
     model.train()
@@ -104,13 +104,13 @@ def train(model, train_loader, optimizer, epoch):
 
 
 # ## 테스트하기
-# 아무리 훈련이 잘 되었다고 해도 실제 데이터를 만났을때 성능이 낮다면 쓸모 없는 모델일 것입니다.
+# 아무리 학습이 잘 되었다고 해도 실제 데이터를 만났을때 성능이 낮다면 쓸모 없는 모델일 것입니다.
 # 우리가 진정 원하는 것은 훈련 데이터에 최적화한 모델이 아니라 모든 데이터에서 높은 성능을 보이는 모델이기 때문입니다.
 # 세상에 존재하는 모든 데이터에 최적화 하는 것을 "일반화"라고 부르고
 # 모델이 얼마나 실제 데이터에 적응하는지를 수치로 나타낸 것을 "일반화 오류"(Generalization Error) 라고 합니다. 
 # 우리가 만든 모델이 얼마나 일반화를 잘 하는지 알아보기 위해,
 # 그리고 언제 훈련을 멈추어야 할지 알기 위해
-# 매 이포크가 끝날때 마다 테스트셋으로 모델의 성능을 측정해보겠습니다.
+# 매 이폭이 끝날때 마다 테스트셋으로 모델의 성능을 측정해보겠습니다.
 
 def test(model, test_loader):
     model.eval()

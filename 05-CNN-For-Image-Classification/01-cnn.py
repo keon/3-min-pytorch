@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # # 5.1 CNN으로 패션 아이템 구분하기
@@ -70,7 +70,7 @@ model     = Net().to(DEVICE)
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5)
 
 
-# ## 훈련하기
+# ## 학습하기
 
 def train(model, train_loader, optimizer, epoch):
     model.train()
@@ -89,8 +89,6 @@ def train(model, train_loader, optimizer, epoch):
 
 
 # ## 테스트하기
-# 아무리 훈련이 잘 되었다고 해도 실제 데이터를 만났을때 성능이 낮다면 쓸모 없는 모델일 것입니다. 우리가 진정 원하는 것은 훈련 데이터에 최적화한 모델이 아니라 모든 데이터에서 높은 성능을 보이는 모델이기 때문입니다. 세상에 존재하는 모든 데이터에 최적화 하는 것을 "일반화"라고 부르고 모델이 얼마나 실제 데이터에 적응하는지를 수치로 나타낸 것을 "일반화 오류"(Generalization Error) 라고 합니다. 
-# 우리가 만든 모델이 얼마나 일반화를 잘 하는지 알아보기 위해, 그리고 언제 훈련을 멈추어야 할지 알기 위해 매 이포크가 끝날때 마다 테스트셋으로 모델의 성능을 측정해보겠습니다.
 
 def test(model, test_loader):
     model.eval()
@@ -115,7 +113,7 @@ def test(model, test_loader):
 
 
 # ## 코드 돌려보기
-# 자, 이제 모든 준비가 끝났습니다. 코드를 돌려서 실제로 훈련이 되는지 확인해봅시다!
+# 자, 이제 모든 준비가 끝났습니다. 코드를 돌려서 실제로 학습이 되는지 확인해봅시다!
 
 for epoch in range(1, EPOCHS + 1):
     train(model, train_loader, optimizer, epoch)

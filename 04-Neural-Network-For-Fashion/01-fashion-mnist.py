@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # # 4.1 Fashion MNIST 데이터셋 알아보기
@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# ## [개념] Fashion MNIST 데이터셋 설명
+# ## [개념] Fashion MNIST 데이터셋
 
 transform = transforms.Compose([
     transforms.ToTensor()

@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # # 4.3 오버피팅과 정규화 (Overfitting and Regularization)
@@ -83,11 +83,11 @@ model        = Net(dropout_p=0.2).to(DEVICE)
 optimizer    = optim.SGD(model.parameters(), lr=0.01)
 
 
-# ## 훈련하기
+# ## 학습하기
 
 def train(model, train_loader, optimizer):
     model.train()
-    for data, target in enumerate(train_loader):
+    for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(DEVICE), target.to(DEVICE)
         optimizer.zero_grad()
         output = model(data)
