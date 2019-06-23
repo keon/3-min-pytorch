@@ -8,9 +8,9 @@
 # 적대적 예제를 생성해 미리 학습이 완료된 딥러닝 모델을 공격해보도록 하겠습니다.
 # FGSM 학습이 필요 없지만 공격 목표를 정할 수 없는 Non-Targeted 방식의 공격입니다.
 # 또, 공격하고자 하는 모델의 정보가 필요한 White Box 방식입니다.
-# 공격이 어떻게 진행되는지 단계별로 설명하도록 하겠습니다.
 
 import torch
+import torch.nn.functional as F
 import torchvision.models as models
 import torchvision.transforms as transforms
 
@@ -83,7 +83,7 @@ img_transforms = transforms.Compose(
 # 이미지넷 데이터셋에는 치와와(Chihuahua)라는 클래스가 존재합니다.
 # 그래서 약간 부담스럽지만 귀여운 치와와 사진을 준비해보았습니다.
 
-img = Image.open('imagenet_samples/chihuahua.jpg')
+img = Image.open('imagenet_samples/corgie.jpg')
 img_tensor = img_transforms(img)
 
 plt.figure(figsize=(10,5))
@@ -163,7 +163,6 @@ def fgsm_attack(model, x, y, eps):
     h_adv = model(x_adv)
     cost = F.cross_entropy(h_adv, y)
     model.zero_grad()
-    
 
 
 out[0,class2idx['wooden spoon']].backward()

@@ -6,7 +6,6 @@ import torch
 import torchvision
 import torch.nn.functional as F
 from torch import nn, optim
-from torch.autograd import Variable
 from torchvision import transforms, datasets
 
 import matplotlib.pyplot as plt
@@ -160,7 +159,4 @@ ax.set_xlim(X.min(), X.max())
 ax.set_ylim(Y.min(), Y.max())
 ax.set_zlim(Z.min(), Z.max())
 plt.show()
-
-
-
 

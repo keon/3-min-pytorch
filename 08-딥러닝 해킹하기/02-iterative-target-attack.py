@@ -3,6 +3,7 @@
 
 # # 8.2 목표를 정해 공격하기
 import torch
+import torch.nn.functional as F
 import torchvision.models as models
 import torchvision.transforms as transforms
 
@@ -44,7 +45,7 @@ def unnorm(x):
     return un_x
 
 
-img = Image.open('imagenet_samples/chihuahua.jpg')
+img = Image.open('imagenet_samples/corgie.jpg')
 img_tensor = img_transforms(img)
 
 plt.figure(figsize=(10,5))
@@ -59,7 +60,7 @@ print(str(cls_idx) + ":" + idx2class[cls_idx] + ":" + str(out.data.numpy()[0][cl
 
 
 learning_rate = 1
-img = Image.open('imagenet_samples/chihuahua.jpg')
+img = Image.open('imagenet_samples/corgie.jpg')
 fake_img_tensor = img_transforms(img)
 img_var_fake = torch.autograd.Variable(fake_img_tensor.unsqueeze(0), requires_grad=True)
 fake_class_idx = class2idx['street sign']

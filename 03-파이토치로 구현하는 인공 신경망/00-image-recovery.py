@@ -7,7 +7,7 @@
 # 치명적인 버그가 있는 weird_function() 이라는 함수가 original_image 라고 하는 어느 이미지 파일을 입력받아 broken_image 라는 이미지를 리턴했습니다. 우리는 이 오염된 이미지를 삭제하려고 했으나 실수로 원본 이미지 파일을 삭제해버린 상황입니다.
 # 다행히도 weird_function()의 소스코드는 삭제되지 않았습니다.
 # 우리의 목표는 오염된 이미지와 weird_function()의 코드만을 가지고 원본 이미지 파일을 복원하는 것입니다.
-# *Sources are based on https://github.com/jcjohnson/pytorch-examples, NYU Intro2ML*
+# *참고자료: https://github.com/jcjohnson/pytorch-examples, NYU Intro2ML*
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 import torch
