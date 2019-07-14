@@ -9,6 +9,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import random
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 
@@ -51,18 +52,15 @@ class Seq2Seq(nn.Module):
         
         # 디코더 (Decoder)
         outputs = []
-        for i in range(targets.size()[0]): 
+        
+        for i in range(targets.size()[0]):
             decoder_input = self.embedding(decoder_input)
             decoder_output, decoder_state = self.decoder(decoder_input, decoder_state)
+            projection = self.project(decoder_output)
+            outputs.append(projection)
             
-            # 디코더의 출력값으로 다음 글자 예측하기
-            projection = self.project(decoder_output.view(1, -1))  # batch x vocab_size
-            prediction = F.softmax(projection, dim=1)  # batch x vocab_size
-            outputs.append(prediction)
-            
-            # 디코더 입력 갱신
-            _, top_i = prediction.data.topk(1)  # 1 x 1
-            decoder_input = top_i
+            #티처 포싱(Teacher Forcing) 사용
+            decoder_input = torch.LongTensor([[targets[i]]])
 
         outputs = torch.stack(outputs).squeeze()
         return outputs

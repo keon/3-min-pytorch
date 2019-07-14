@@ -31,7 +31,6 @@ print(model)
 
 CLASSES = json.load(open('./imagenet_samples/imagenet_classes.json'))
 idx2class = [CLASSES[str(i)] for i in range(1000)]
-class2idx = {v:i for i,v in enumerate(idx2class)}
 
 
 # ## 이미지 불러오기
@@ -53,8 +52,8 @@ print("이미지 텐서 모양:", img_tensor.size())
 
 
 # 시각화를 위해 넘파이 행렬 변환
-original_img_view = img_tensor.squeeze(0)  # [1, 3, 244, 244] -> [3, 244, 244]
-original_img_view = original_img_view.transpose(0,2).transpose(0,1).detach().numpy()
+original_img_view = img_tensor.squeeze(0).detach()  # [1, 3, 244, 244] -> [3, 244, 244]
+original_img_view = original_img_view.transpose(0,2).transpose(0,1).numpy()
 
 # 텐서 시각화
 plt.imshow(original_img_view)
@@ -86,7 +85,7 @@ def fgsm_attack(image, epsilon, gradient):
 # ## 적대적 예제 생성
 
 # 이미지의 기울기값을 구하도록 설정
-img_tensor.requires_grad = True
+img_tensor.requires_grad_(True)
 
 # 이미지를 모델에 통과시킴
 output = model(img_tensor)
@@ -121,7 +120,8 @@ print("레이블 이름:", perturbed_prediction_name)
 
 
 # 시각화를 위해 넘파이 행렬 변환
-perturbed_data_view = perturbed_data.squeeze(0).transpose(0,2).transpose(0,1).detach().numpy()
+perturbed_data_view = perturbed_data.squeeze(0).detach()
+perturbed_data_view = perturbed_data_view.transpose(0,2).transpose(0,1).numpy()
 
 plt.imshow(perturbed_data_view)
 
@@ -130,11 +130,11 @@ plt.imshow(perturbed_data_view)
 
 f, a = plt.subplots(1, 2, figsize=(10, 10))
 
-# 원본 사진
+# 원본
 a[0].set_title(prediction_name)
 a[0].imshow(original_img_view)
 
-# 복원된 사진
+# 적대적 예제
 a[1].set_title(perturbed_prediction_name)
 a[1].imshow(perturbed_data_view)
 

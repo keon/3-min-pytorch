@@ -47,7 +47,6 @@
 8. [딥러닝 해킹하기](08-딥러닝_해킹하기) - Adversarial Attack
   * [개념] Adversarial Attack 이란?
   * [프로젝트 1] [FGSM 공격](08-딥러닝_해킹하기/01-fgsm-attack.ipynb)
-  * [프로젝트 2] [타겟을 정해 공격하기](08-딥러닝_해킹하기/02-iterative-target-attack.ipynb)
   * 더 보기
 9. [경쟁을 통해 성장하는 GAN](09-경쟁을_통해_학습하는_GAN) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
   * [개념] GAN 기초
