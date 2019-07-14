@@ -14,50 +14,50 @@
   * [개념] 신경망의 원리
   * [개념] 딥러닝과 신경망
   * [개념] 왜 파이토치인가?
-2. [파이토치 시작하기](02-Getting-Started-With-PyTorch) - 파이토치 환경설정과 사용법을 익혀봅니다
+2. [파이토치 시작하기](02-파이토치_시작하기) - 파이토치 환경설정과 사용법을 익혀봅니다
   * [프로젝트 1] 파이토치 설치 & 환경구성
   * [프로젝트 2] 파이토치 예제 내려받고 실행해보기
   * [프로젝트 3] 토치비전과 토치텍스트로 데이터셋 불러오기
-3. [파이토치로 구현하는 신경망](03-Coding-Neural-Networks-In-PyTorch) - 파이토치를 이용하여 가장 기본적인 신경망을 만들어봅니다.
+3. [파이토치로 구현하는 신경망](03-파이토치로_구현하는_인공_신경망) - 파이토치를 이용하여 가장 기본적인 신경망을 만들어봅니다.
   * [개념] 텐서와 Autograd
   * [프로젝트 1] 경사하강법으로 이미지 복원하기
   * [프로젝트 2] 신경망 모델 구현하기
-4. [딥러닝으로 패션 아이템 구분하기](04-Neural-Network-For-Fashion) - Fashion MNIST 데이터셋과 앞서 배운 인공신경망을 이용하여 패션아이템을 구분해봅니다.
-  * [개념] [Fashion MNIST 데이터셋 설명](04-Neural-Network-For-Fashion/01-fashion-mnist.ipynb)
-  * [프로젝트 1] [Fashion MNIST 학습하기](04-Neural-Network-For-Fashion/02-neural-network.ipynb)
+4. [딥러닝으로 패션 아이템 구분하기](04-딥러닝으로_패션_아이템_구분하기) - Fashion MNIST 데이터셋과 앞서 배운 인공신경망을 이용하여 패션아이템을 구분해봅니다.
+  * [개념] [Fashion MNIST 데이터셋 설명](04-딥러닝으로_패션_아이템_구분하기/01-fashion-mnist.ipynb)
+  * [프로젝트 1] [Fashion MNIST 학습하기](04-딥러닝으로_패션_아이템_구분하기/02-neural-network.ipynb)
   * [팁] 성능 측정법 알아보기 (Train/Validation/Test)
-  * [프로젝트 2] [오버피팅과 정규화](04-Neural-Network-For-Fashion/03-overfitting-and-regularization.ipynb)
+  * [프로젝트 2] [오버피팅과 정규화](04-딥러닝으로_패션_아이템_구분하기/03-overfitting-and-regularization.ipynb)
   * 더 보기
-5. [이미지 인식능력이 탁월한 CNN](05-CNN-For-Image-Classification)
+5. [이미지 인식능력이 탁월한 CNN](05-이미지_처리능력이_탁월한_CNN)
   * [개념] CNN 기초
-  * [프로젝트 1] [CNN 모델 구현하기](05-CNN-For-Image-Classification/01-cnn.ipynb)
-  * [프로젝트 2] [컬러 데이터셋에 적용하기](05-CNN-For-Image-Classification/02-cifar-cnn.ipynb)
-  * [팁] [토치비전으로 복잡한 모델 사용하기](05-CNN-For-Image-Classification/03-torcivision-models.ipynb)
+  * [프로젝트 1] [CNN 모델 구현하기](05-이미지_처리능력이_탁월한_CNN/01-cnn.ipynb)
+  * [프로젝트 2] [컬러 데이터셋에 적용하기](05-이미지_처리능력이_탁월한_CNN/02-cifar-cnn.ipynb)
+  * [팁] [토치비전으로 복잡한 모델 사용하기](05-이미지_처리능력이_탁월한_CNN/03-torcivision-models.ipynb)
   * 더 보기
-6. [사람의 지도 없이 학습하는 Autoencoder](06-Autoencoder) - 레이블이 없는 상태서 특징추출을 하는 오토인코더에 대해 배워봅니다.
+6. [사람의 지도 없이 학습하는 Autoencoder](06-사람의_지도_없이_학습하는_오토인코더) - 레이블이 없는 상태서 특징추출을 하는 오토인코더에 대해 배워봅니다.
   * [개념] 오토인코더 기초
-  * [프로젝트 1] [오토인코더로 이미지의 특징을 압축해보기](06-Autoencoder/01-autoencoder.ipynb)
+  * [프로젝트 1] [오토인코더로 이미지의 특징을 압축해보기](06-사람의_지도_없이_학습하는_오토인코더/01-autoencoder.ipynb)
   * [프로젝트 2] Latent 공간 탐험하기
   * 더 보기
-7. [순차적인 데이터를 처리하는 RNN](07-RNN-For-Sequential-Data) - RNN을 활용하여 영화 리뷰 감정 분석과 기계번역을 해봅니다
+7. [순차적인 데이터를 처리하는 RNN](07-순차적인_데이터를_처리하는_RNN) - RNN을 활용하여 영화 리뷰 감정 분석과 기계번역을 해봅니다
   * [개념] RNN 기초
-  * [프로젝트 1] [영화 리뷰 감정 분석](07-RNN-For-Sequential-Data/01-text-classification.ipynb)
-  * [프로젝트 2] [Seq2Seq 기계 번역](07-RNN-For-Sequential-Data/02-sequence-to-sequence.ipynb)
+  * [프로젝트 1] [영화 리뷰 감정 분석](07-순차적인_데이터를_처리하는_RNN/01-text-classification.ipynb)
+  * [프로젝트 2] [Seq2Seq 기계 번역](07-순차적인_데이터를_처리하는_RNN/02-sequence-to-sequence.ipynb)
   * 더 보기
-8. [딥러닝 해킹하기](08-Hacking-Deep-Learning) - Adversarial Attack
+8. [딥러닝 해킹하기](08-딥러닝_해킹하기) - Adversarial Attack
   * [개념] Adversarial Attack 이란?
-  * [프로젝트 1] [FGSM 공격](08-Hacking-Deep-Learning/01-fgsm-attack.ipynb)
-  * [프로젝트 2] [타겟을 정해 공격하기](08-Hacking-Deep-Learning/02-iterative-target-attack.ipynb)
+  * [프로젝트 1] [FGSM 공격](08-딥러닝_해킹하기/01-fgsm-attack.ipynb)
+  * [프로젝트 2] [타겟을 정해 공격하기](08-딥러닝_해킹하기/02-iterative-target-attack.ipynb)
   * 더 보기
-9. [경쟁을 통해 성장하는 GAN](09-Generative-Adversarial-Networks) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
+9. [경쟁을 통해 성장하는 GAN](09-경쟁을_통해_학습하는_GAN) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
   * [개념] GAN 기초
-  * [프로젝트 1] [GAN으로 새로운 패션아이템 생성하기](09-Generative-Adversarial-Networks/01-gan.ipynb)
-  * [프로젝트 2] [Conditional GAN으로 생성 컨트롤하기](09-Generative-Adversarial-Networks/02-conditional-gan.ipynb)
+  * [프로젝트 1] [GAN으로 새로운 패션아이템 생성하기](09-경쟁을_통해_학습하는_GAN/01-gan.ipynb)
+  * [프로젝트 2] [Conditional GAN으로 생성 컨트롤하기](09-경쟁을_통해_학습하는_GAN/02-conditional-gan.ipynb)
   * 더 보기
-10. [주어진 환경과 상호작용을 통해 성장하는 DQN](10-DQN-Learns-From-Environment) - 간단한 게임환경 안에서 스스로 성장하는 DQN 에이전트를 만들어봅니다.
+10. [주어진 환경과 상호작용을 통해 성장하는 DQN](10-주어진_환경과_상호작용을_통해_학습하는_DQN) - 간단한 게임환경 안에서 스스로 성장하는 DQN 에이전트를 만들어봅니다.
   * [개념] 강화학습과 DQN기초
   * [팁] OpenAI Gym
-  * [프로젝트 1] [카트폴 게임 마스터하기](10-DQN-Learns-From-Environment/01-cartpole-dqn.ipynb)
+  * [프로젝트 1] [카트폴 게임 마스터하기](10-주어진_환경과_상호작용을_통해_학습하는_DQN/01-cartpole-dqn.ipynb)
   * 더 보기
 
 
