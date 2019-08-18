@@ -16,7 +16,7 @@ from PIL import Image
 import json
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+
 import matplotlib.pyplot as plt
 
 

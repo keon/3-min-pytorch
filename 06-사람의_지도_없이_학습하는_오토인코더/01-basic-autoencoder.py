@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 import numpy as np
-get_ipython().run_line_magic('matplotlib', 'inline')
+
 
 
 torch.manual_seed(1)    # reproducible

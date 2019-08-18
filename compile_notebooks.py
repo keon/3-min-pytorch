@@ -23,6 +23,7 @@ def main():
     exporter = ScriptExporter()
     cell_pattern = "#\s(In)\[(.*)\]:\n\n\n"  #  # In [*]:
     comment_pattern = "(#(\s*)\n)"
+    matplotlib_pattern = "(.*get_ipython.*)"
 
     for nbpath in glob.iglob('**/*.ipynb', recursive=True):
         base, ext = os.path.splitext(nbpath)
@@ -31,6 +32,7 @@ def main():
         # remove unecessary patterns
         script = re.sub(cell_pattern, "", script)
         script = re.sub(comment_pattern, "", script)
+        script = re.sub(matplotlib_pattern, "", script)
         pypath = (base + resources.get('output_extension', '.txt'))
         print("Saving script %s" % pypath)
         with io.open(pypath, 'w', encoding='utf-8') as f:

@@ -3,7 +3,7 @@
 
 # # 4.1 Fashion MNIST 데이터셋 알아보기
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+
 from torchvision import datasets, transforms, utils
 from torch.utils import data
 

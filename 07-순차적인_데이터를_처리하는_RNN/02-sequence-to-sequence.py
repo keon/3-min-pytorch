@@ -11,7 +11,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import random
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+
 
 
 vocab_size = 256  # 총 아스키 코드 개수

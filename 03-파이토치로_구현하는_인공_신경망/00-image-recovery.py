@@ -9,7 +9,7 @@
 # 우리의 목표는 오염된 이미지와 weird_function()의 코드만을 가지고 원본 이미지 파일을 복원하는 것입니다.
 # *참고자료: https://github.com/jcjohnson/pytorch-examples, NYU Intro2ML*
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+
 import torch
 import pickle
 import matplotlib.pyplot as plot
