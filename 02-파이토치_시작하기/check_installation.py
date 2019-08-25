@@ -11,7 +11,7 @@ required_packages = [
 installed_packages = []
 uninstalled_packages = []
 
-def check_dependencies():
+def run():
     is_ready = True
     for package_name, korean_name in required_packages:
         printed_name = "%s(%s)" % (korean_name, package_name)
@@ -37,4 +37,6 @@ def check_dependencies():
             print(" * " + pkg)
     return is_ready 
 
-check_dependencies()
+
+if __name__ == "__main__":
+    run()
