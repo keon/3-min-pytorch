@@ -18,6 +18,7 @@ install:
     # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
     # - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 script:
+    python compile_notebooks
     pytest .
     # Check python install package
     # - pip install -e .
