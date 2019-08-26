@@ -25,7 +25,7 @@ def main():
     comment_pattern = "(#(\s*)\n)"
     matplotlib_pattern = "(.*get_ipython.*)"
 
-    for nbpath in glob.iglob('**/*.ipynb', recursive=True):
+    for nbpath in glob.iglob('./[0-9]**/*.ipynb', recursive=True):
         base, ext = os.path.splitext(nbpath)
         script, resources = exporter.from_filename(nbpath)
 
