@@ -5,18 +5,15 @@
 # ## 신경망 모델 구현하기
 
 import torch
-import torch.nn.functional as F
 import numpy
 from sklearn.datasets import make_blobs
 import matplotlib.pyplot as plot
+import torch.nn.functional as F
 
 
 n_dim = 2
 x_train, y_train = make_blobs(n_samples=80, n_features=n_dim, centers=[[1,1],[-1,-1],[1,-1],[-1,1]], shuffle=True, cluster_std=0.3)
 x_test, y_test = make_blobs(n_samples=20, n_features=n_dim, centers=[[1,1],[-1,-1],[1,-1],[-1,1]], shuffle=True, cluster_std=0.3)
-
-
-print(y_train)
 
 
 def label_map(y_, from_, to_):
@@ -31,10 +28,6 @@ y_test = label_map(y_test, [0, 1], 0)
 y_test = label_map(y_test, [2, 3], 1)
 
 
-# 데이터가 제대로 만들어 졌는지, 그리고 제대로 레이블링이 되었는지 확인하기 위해 matplotlib 을 이용해 데이터를 시각화 해 보겠습니다.
-# 레이블이 0 인 학습 데이터는 점으로, 1인 데이터는 십자가로 표시했습니다.
-# <img src="./images/data_distribution.png" width="200">
-
 def vis_data(x,y = None, c = 'r'):
     if y is None:
         y = [None] * len(x)
@@ -48,8 +41,6 @@ plot.figure()
 vis_data(x_train, y_train, c='r')
 plot.show()
 
-
-# 마지막으로 신경망을 구현 하기 전, 위에서 정의한 데이터들을 넘파이 리스트가 아닌 파이토치 텐서로 바꿔줍니다.
 
 x_train = torch.FloatTensor(x_train)
 x_test = torch.FloatTensor(x_test)
@@ -83,8 +74,8 @@ optimizer = torch.optim.SGD(model.parameters(), lr = learning_rate)
 
 
 model.eval()
-test_loss_before =  criterion(model(x_test).squeeze(), y_test)
-print('Before Training, test loss is ', test_loss_before.item())
+test_loss_before = criterion(model(x_test).squeeze(), y_test)
+print('Before Training, test loss is {}'.format(test_loss_before.item()))
 
 
 # 오차값이 0.73 이 나왔습니다. 이정도의 오차를 가진 모델은 사실상 분류하는 능력이 없다고 봐도 무방합니다.
@@ -96,14 +87,14 @@ for epoch in range(epochs):
     train_output = model(x_train)
     train_loss = criterion(train_output.squeeze(), y_train)
     if epoch % 100 == 0:
-        print('Train loss at ', epoch, 'is ', train_loss.item())
+        print('Train loss at {} is {}'.format(epoch, train_loss.item()))
     train_loss.backward()
     optimizer.step()
 
 
 model.eval()
 test_loss = criterion(model(x_test).squeeze(), y_test) 
-print('After Training, test loss is ', test_loss.item())
+print('After Training, test loss is {}'.format(test_loss.item()))
 
 
 # 학습을 하기 전과 비교했을때 현저하게 줄어든 오차값을 확인 하실 수 있습니다.
@@ -118,11 +109,8 @@ torch.save(model.state_dict(), './model.pt')
 new_model = NeuralNet(2, 5)
 new_model.load_state_dict(torch.load('./model.pt'))
 new_model.eval()
-print(new_model(torch.FloatTensor([-1,1])).item() )
+print('벡터 [-1, 1]이 레이블 1을 가질 확률은 {}'.format(new_model(torch.FloatTensor([-1,1])).item()))
 
 
-# 벡터 [-1,1]을 학습하고 저장된 모델에 입력시켰을 때 레이블이 1일 확률은 90% 이상이 나옵니다.
-# 우리의 첫번째 신경망 모델은 이제 꽤 믿을만한 분류 작업이 가능하게 된 것입니다.
-# ```python
-# 벡터 [-1,1]이 레이블 1 을 가질 확률은  0.9745796918869019
-# ```
+
+
