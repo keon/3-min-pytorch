@@ -13,6 +13,3 @@ l.backward()
 print(w.grad)
 print('l을 w로 미분한 값은 {}'.format(w.grad))
 
-
-
-

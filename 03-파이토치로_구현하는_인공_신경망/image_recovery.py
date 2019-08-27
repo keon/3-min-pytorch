@@ -7,7 +7,6 @@
 # 이미지 처리를 위해 만들어 두었던 weird_function() 함수에 실수로 버그가 들어가 100×100 픽셀의 오염된 미미지가 만들어졌습니다. 이 오염된 이미지와 오염되기 전 원본 이미지를 동시에 파일로 저장하려고 했으나, 모종의 이유로 원본 이미지 파일은 삭제된 상황입니다. 다행히도 weird_function()의 소스코드는 남아 있습니다. 오염된 이미지와 weird_function()을 활용해 원본 이미지를 복원해봅시다.
 # *참고자료: https://github.com/jcjohnson/pytorch-examples, NYU Intro2ML*
 
-
 import torch
 import pickle
 import matplotlib.pyplot as plt
@@ -53,10 +52,4 @@ for i in range(0,20000):
 
 
 plt.imshow(random_tensor.view(100,100).data)
-
-
-
-
-
-
 

@@ -113,6 +113,3 @@ new_model.load_state_dict(torch.load('./model.pt'))
 new_model.eval()
 print('벡터 [-1, 1]이 레이블 1을 가질 확률은 {}'.format(new_model(torch.FloatTensor([-1,1])).item()))
 
-
-
-
