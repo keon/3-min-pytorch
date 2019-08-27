@@ -7,7 +7,7 @@
 import torch
 import numpy
 from sklearn.datasets import make_blobs
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import torch.nn.functional as F
 
 
@@ -33,16 +33,17 @@ def vis_data(x,y = None, c = 'r'):
         y = [None] * len(x)
     for x_, y_ in zip(x,y):
         if y_ is None:
-            plot.plot(x_[0], x_[1], '*',markerfacecolor='none', markeredgecolor=c)
+            plt.plot(x_[0], x_[1], '*',markerfacecolor='none', markeredgecolor=c)
         else:
-            plot.plot(x_[0], x_[1], c+'o' if y_ == 0 else c+'+')
+            plt.plot(x_[0], x_[1], c+'o' if y_ == 0 else c+'+')
 
-plot.figure()
+plt.figure()
 vis_data(x_train, y_train, c='r')
-plot.show()
+plt.show()
 
 
 x_train = torch.FloatTensor(x_train)
+print(x_train.shape)
 x_test = torch.FloatTensor(x_test)
 y_train = torch.FloatTensor(y_train)
 y_test = torch.FloatTensor(y_test)
@@ -69,7 +70,7 @@ class NeuralNet(torch.nn.Module):
 model = NeuralNet(2, 5)
 learning_rate = 0.03
 criterion = torch.nn.BCELoss()
-epochs = 1000
+epochs = 2000
 optimizer = torch.optim.SGD(model.parameters(), lr = learning_rate)
 
 
@@ -102,6 +103,7 @@ print('After Training, test loss is {}'.format(test_loss.item()))
 # 이제 학습된 모델을 .pt 파일로 저장해 보겠습니다.
 
 torch.save(model.state_dict(), './model.pt')
+print('state_dict format of the model: {}'.format(model.state_dict()))
 
 
 # `save()` 를 실행하고 나면 학습된 신경망의 가중치를 내포하는 model.pt 라는 파일이 생성됩니다. 아래 코드처럼 새로운 신경망 객체에 model.pt 속의 가중치값을 입력시키는 것 또한 가능합니다.

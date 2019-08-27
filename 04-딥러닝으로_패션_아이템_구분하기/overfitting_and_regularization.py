@@ -12,7 +12,6 @@ import torch.nn.functional as F
 from torchvision import transforms, datasets
 
 
-torch.manual_seed(42)
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 
@@ -58,14 +57,17 @@ class Net(nn.Module):
         self.fc1 = nn.Linear(784, 256)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 10)
+        # 드롭아웃 확률
         self.dropout_p = dropout_p
 
     def forward(self, x):
         x = x.view(-1, 784)
         x = F.relu(self.fc1(x))
+        # 드롭아웃 추가
         x = F.dropout(x, training=self.training,
                       p=self.dropout_p)
         x = F.relu(self.fc2(x))
+        # 드롭아웃 추가
         x = F.dropout(x, training=self.training,
                       p=self.dropout_p)
         x = self.fc3(x)
@@ -97,15 +99,7 @@ def train(model, train_loader, optimizer):
 
 
 # ## 테스트하기
-# 아무리 훈련이 잘 되었다고 해도 실제 데이터를 만났을때 성능이 낮다면 쓸모 없는 모델일 것입니다.
-# 우리가 진정 원하는 것은 훈련 데이터에 최적화한 모델이 아니라 모든 데이터에서 높은 성능을 보이는 모델이기 때문입니다.
-# 세상에 존재하는 모든 데이터에 최적화 하는 것을 "일반화"라고 부르고
-# 모델이 얼마나 실제 데이터에 적응하는지를 수치로 나타낸 것을 "일반화 오류"(Generalization Error) 라고 합니다. 
-# 우리가 만든 모델이 얼마나 일반화를 잘 하는지 알아보기 위해,
-# 그리고 언제 훈련을 멈추어야 할지 알기 위해
-# 매 이포크가 끝날때 마다 테스트셋으로 모델의 성능을 측정해보겠습니다.
-
-def test(model, test_loader):
+def evaluate(model, test_loader):
     model.eval()
     test_loss = 0
     correct = 0
@@ -130,7 +124,7 @@ def test(model, test_loader):
 
 for epoch in range(1, EPOCHS + 1):
     train(model, train_loader, optimizer)
-    test_loss, test_accuracy = test(model, test_loader)
+    test_loss, test_accuracy = evaluate(model, test_loader)
     
     print('[{}] Test Loss: {:.4f}, Accuracy: {:.2f}%'.format(
           epoch, test_loss, test_accuracy))

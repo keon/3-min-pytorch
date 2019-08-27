@@ -11,7 +11,6 @@ import torch.nn.functional as F
 from torchvision import transforms, datasets
 
 
-torch.manual_seed(42)
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 
@@ -87,9 +86,10 @@ optimizer    = optim.SGD(model.parameters(), lr=0.01)
 
 # ## 학습하기
 
-def train(model, train_loader, optimizer, epoch):
+def train(model, train_loader, optimizer):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
+        # 학습 데이터를 DEVICE의 메모리로 보냄
         data, target = data.to(DEVICE), target.to(DEVICE)
         optimizer.zero_grad()
         output = model(data)
@@ -97,22 +97,10 @@ def train(model, train_loader, optimizer, epoch):
         loss.backward()
         optimizer.step()
 
-        if batch_idx % 200 == 0:
-            print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
-                epoch, batch_idx * len(data), len(train_loader.dataset),
-                100. * batch_idx / len(train_loader), loss.item()))
-
 
 # ## 테스트하기
-# 아무리 학습이 잘 되었다고 해도 실제 데이터를 만났을때 성능이 낮다면 쓸모 없는 모델일 것입니다.
-# 우리가 진정 원하는 것은 훈련 데이터에 최적화한 모델이 아니라 모든 데이터에서 높은 성능을 보이는 모델이기 때문입니다.
-# 세상에 존재하는 모든 데이터에 최적화 하는 것을 "일반화"라고 부르고
-# 모델이 얼마나 실제 데이터에 적응하는지를 수치로 나타낸 것을 "일반화 오류"(Generalization Error) 라고 합니다. 
-# 우리가 만든 모델이 얼마나 일반화를 잘 하는지 알아보기 위해,
-# 그리고 언제 훈련을 멈추어야 할지 알기 위해
-# 매 이폭이 끝날때 마다 테스트셋으로 모델의 성능을 측정해보겠습니다.
 
-def test(model, test_loader):
+def evaluate(model, test_loader):
     model.eval()
     test_loss = 0
     correct = 0
@@ -121,11 +109,12 @@ def test(model, test_loader):
             data, target = data.to(DEVICE), target.to(DEVICE)
             output = model(data)
 
-            # sum up batch loss
+            # 모든 오차 더하기
             test_loss += F.cross_entropy(output, target,
                                          size_average=False).item()
             
-            # get the index of the max log-probability
+            # 가장 큰 값을 가진 클래스가 모델의 예측입니다.
+            # 예측과 정답을 비교하여 일치할 경우 correct에 1을 더합니다.
             pred = output.max(1, keepdim=True)[1]
             correct += pred.eq(target.view_as(pred)).sum().item()
 
@@ -138,8 +127,8 @@ def test(model, test_loader):
 # 자, 이제 모든 준비가 끝났습니다. 코드를 돌려서 실제로 훈련이 되는지 확인해봅시다!
 
 for epoch in range(1, EPOCHS + 1):
-    train(model, train_loader, optimizer, epoch)
-    test_loss, test_accuracy = test(model, test_loader)
+    train(model, train_loader, optimizer)
+    test_loss, test_accuracy = evaluate(model, test_loader)
     
     print('[{}] Test Loss: {:.4f}, Accuracy: {:.2f}%'.format(
           epoch, test_loss, test_accuracy))

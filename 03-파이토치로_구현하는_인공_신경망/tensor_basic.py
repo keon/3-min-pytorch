@@ -40,5 +40,5 @@ print("랭크(차원):", x.ndimension())
 try:
     x = x.view(2,4)
 except Exception as e:
-    print(e) #Error
+    print(e) #에러 출력
 
