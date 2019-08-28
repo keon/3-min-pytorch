@@ -10,14 +10,17 @@ import torch.optim as optim
 import torch.nn.functional as F
 from torchvision import transforms, datasets, models
 
+
 torch.manual_seed(42)
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
+
 
 # ## 하이퍼파라미터 
 
 EPOCHS     = 300
 BATCH_SIZE = 128
+
 
 # ## 데이터셋 불러오기
 
@@ -40,6 +43,7 @@ test_loader = torch.utils.data.DataLoader(
                        transforms.Normalize((0.5, 0.5, 0.5),
                                             (0.5, 0.5, 0.5))])),
     batch_size=BATCH_SIZE, shuffle=True)
+
 
 # ## ResNet 모델 만들기
 
@@ -100,6 +104,7 @@ class ResNet(nn.Module):
         out = self.linear(out)
         return out
 
+
 # ## 준비
 
 model = ResNet().to(DEVICE)
@@ -107,7 +112,9 @@ optimizer = optim.SGD(model.parameters(), lr=0.1,
                       momentum=0.9, weight_decay=0.0005)
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.1)
 
+
 print(model)
+
 
 # ## 학습하기
 
@@ -120,6 +127,7 @@ def train(model, train_loader, optimizer, epoch):
         loss = F.cross_entropy(output, target)
         loss.backward()
         optimizer.step()
+
 
 # ## 테스트하기
 
@@ -144,6 +152,7 @@ def test(model, test_loader):
     test_accuracy = 100. * correct / len(test_loader.dataset)
     return test_loss, test_accuracy
 
+
 # ## 코드 돌려보기
 # 자, 이제 모든 준비가 끝났습니다. 코드를 돌려서 실제로 훈련이 되는지 확인해봅시다!
 
@@ -154,5 +163,7 @@ for epoch in range(1, EPOCHS + 1):
     
     print('[{}] Test Loss: {:.4f}, Accuracy: {:.2f}%'.format(
           epoch, test_loss, test_accuracy))
+
+
 
 

@@ -13,7 +13,9 @@ from torchvision.utils import save_image
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 torch.manual_seed(1)    # reproducible
+
 
 # Hyper Parameters
 EPOCHS = 300
@@ -21,6 +23,7 @@ BATCH_SIZE = 100
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 print("Using Device:", DEVICE)
+
 
 # Fashion MNIST digits dataset
 trainset = datasets.FashionMNIST('./.data',
@@ -35,9 +38,11 @@ train_loader = torch.utils.data.DataLoader(
     batch_size  = BATCH_SIZE,
     shuffle     = True)
 
+
 def one_hot_embedding(labels, num_classes):
     y = torch.eye(num_classes) 
     return y[labels]
+
 
 # Discriminator
 D = nn.Sequential(
@@ -47,6 +52,7 @@ D = nn.Sequential(
         nn.LeakyReLU(0.2),
         nn.Linear(256, 1),
         nn.Sigmoid())
+
 
 # Generator 
 G = nn.Sequential(
@@ -58,6 +64,7 @@ G = nn.Sequential(
         nn.Tanh())
 
 
+
 # Device setting
 D = D.to(DEVICE)
 G = G.to(DEVICE)
@@ -66,6 +73,7 @@ G = G.to(DEVICE)
 criterion = nn.BCELoss()
 d_optimizer = optim.Adam(D.parameters(), lr=0.0002)
 g_optimizer = optim.Adam(G.parameters(), lr=0.0002)
+
 
 total_step = len(train_loader)
 for epoch in range(EPOCHS):
@@ -121,6 +129,7 @@ for epoch in range(EPOCHS):
                           real_score.mean().item(),
                           fake_score.mean().item()))
 
+
 for i in range(100):
     label = torch.tensor([4])
     class_label = one_hot_embedding(label, 10).to(DEVICE)
@@ -130,5 +139,7 @@ for i in range(100):
     fake_images = np.reshape(fake_images.cpu().data.numpy()[0],(28, 28))
     plt.imshow(fake_images, cmap = 'gray')
     plt.show()
+
+
 
 

@@ -16,12 +16,14 @@ import matplotlib.pyplot as plt
 from collections import deque
 import numpy as np
 
+
 # ## OpenAI Gym을 이용하여 게임환경 구축하기
 # 강화학습 예제들을 보면 항상 게임과 연관되어 있습니다. 원래 우리가 궁극적으로 원하는 목표는 어디서든 적응할 수 있는 인공지능이지만, 너무 복잡한 문제이기도 하고 가상 환경을 설계하기도 어렵기 때문에 일단 게임이라는 환경을 사용해 하는 것입니다.
 # 대부분의 게임은 점수 혹은 목표가 있습니다. 점수가 오르거나 목표에 도달하면 일종의 리워드를 받고 원치 않은 행동을 할때는 마이너스 리워드를 주는 경우도 있습니다. 아까 비유를 들었던 달리기를 배울때의 경우를 예로 들면 총 나아간 길이 혹은 목표 도착지 도착 여부로 리워드를 주고 넘어질때 패널티를 줄 수 있을 것입니다. 
 # 게임중에서도 가장 간단한 카트폴이라는 환경을 구축하여 강화학습을 배울 토대를 마련해보겠습니다.
 
 env = gym.make('CartPole-v1')
+
 
 # ### 하이퍼파라미터
 # 하이퍼파라미터
@@ -31,6 +33,7 @@ EPS_END = 0.05   # e-greedy threshold 최종 값
 EPS_DECAY = 200  # e-greedy threshold decay
 GAMMA = 0.8      LR = 0.001       # NN optimizer learning rate
 BATCH_SIZE = 64  # Q-learning batch size
+
 
 # ## DQN 에이전트
 
@@ -80,6 +83,7 @@ class DQNAgent:
         loss.backward()
         self.optimizer.step()
 
+
 # ## 학습 준비하기
 # 드디어 만들어둔 DQNAgent를 인스턴스화 합니다.
 # 그리고 `gym`을 이용하여 `CartPole-v0`환경도 준비합니다.
@@ -89,6 +93,7 @@ class DQNAgent:
 agent = DQNAgent()
 env = gym.make('CartPole-v0')
 score_history = []
+
 
 # ## 학습 시작
 
@@ -115,5 +120,7 @@ for e in range(1, EPISODES+1):
             print("에피소드:{0} 점수: {1}".format(e, steps))
             score_history.append(steps)
             break
+
+
 
 

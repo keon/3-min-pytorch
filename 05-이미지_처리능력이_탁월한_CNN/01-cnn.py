@@ -10,12 +10,15 @@ import torch.optim as optim
 import torch.nn.functional as F
 from torchvision import transforms, datasets
 
+
 torch.manual_seed(42)
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 
+
 EPOCHS     = 40
 BATCH_SIZE = 64
+
 
 # ## 데이터셋 불러오기
 
@@ -37,6 +40,7 @@ test_loader = torch.utils.data.DataLoader(
                    ])),
     batch_size=BATCH_SIZE, shuffle=True)
 
+
 # ## 뉴럴넷으로 Fashion MNIST 학습하기
 
 class Net(nn.Module):
@@ -57,12 +61,14 @@ class Net(nn.Module):
         x = self.fc2(x)
         return F.log_softmax(x, dim=1)
 
+
 # ## 하이퍼파라미터 
 # `to()` 함수는 모델의 파라미터들을 지정한 곳으로 보내는 역할을 합니다. 일반적으로 CPU 1개만 사용할 경우 필요는 없지만, GPU를 사용하고자 하는 경우 `to("cuda")`로 지정하여 GPU로 보내야 합니다. 지정하지 않을 경우 계속 CPU에 남아 있게 되며 빠른 훈련의 이점을 누리실 수 없습니다.
 # 최적화 알고리즘으로 파이토치에 내장되어 있는 `optim.SGD`를 사용하겠습니다.
 
 model     = Net().to(DEVICE)
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5)
+
 
 # ## 학습하기
 
@@ -80,6 +86,7 @@ def train(model, train_loader, optimizer, epoch):
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                 100. * batch_idx / len(train_loader), loss.item()))
+
 
 # ## 테스트하기
 
@@ -104,6 +111,7 @@ def test(model, test_loader):
     test_accuracy = 100. * correct / len(test_loader.dataset)
     return test_loss, test_accuracy
 
+
 # ## 코드 돌려보기
 # 자, 이제 모든 준비가 끝났습니다. 코드를 돌려서 실제로 학습이 되는지 확인해봅시다!
 
@@ -113,3 +121,4 @@ for epoch in range(1, EPOCHS + 1):
     
     print('[{}] Test Loss: {:.4f}, Accuracy: {:.2f}%'.format(
           epoch, test_loss, test_accuracy))
+
