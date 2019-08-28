@@ -6,7 +6,6 @@
 from torchvision import datasets, transforms, utils
 from torch.utils import data
 
-
 import matplotlib.pyplot as plt
 import numpy as np
 
