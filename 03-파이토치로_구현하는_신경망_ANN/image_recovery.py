@@ -11,13 +11,10 @@ import torch
 import pickle
 import matplotlib.pyplot as plt
 
-
 shp_original_img = (100, 100)
 broken_image =  torch.FloatTensor( pickle.load(open('./broken_image_t.p', 'rb'),encoding='latin1' ) )
 
-
 plt.imshow(broken_image.view(100,100)) 
-
 
 def weird_function(x, n_iter=5):
     h = x    
@@ -31,13 +28,10 @@ def weird_function(x, n_iter=5):
             h = torch.cat( (h[h.shape[0]//2:],h[:h.shape[0]//2]), 0  )
     return h
 
-
 def distance_loss(hypothesis, broken_image):    
     return torch.dist(hypothesis, broken_image)
 
-
 random_tensor = torch.randn(10000, dtype = torch.float)
-
 
 lr = 0.8
 for i in range(0,20000):
@@ -50,6 +44,4 @@ for i in range(0,20000):
     if i % 1000 == 0:
         print('Loss at {} = {}'.format(i, loss.item()))
 
-
 plt.imshow(random_tensor.view(100,100).data)
-

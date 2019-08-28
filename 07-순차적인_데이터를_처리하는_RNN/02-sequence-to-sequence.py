@@ -11,8 +11,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import random
 
-
-
+%matplotlib inline
 
 vocab_size = 256  # 총 아스키 코드 개수
 x_ = list(map(ord, "hello"))  # 아스키 코드 리스트로 변환
@@ -20,10 +19,8 @@ y_ = list(map(ord, "hola"))   # 아스키 코드 리스트로 변환
 print("hello -> ", x_)
 print("hola  -> ", y_)
 
-
 x = torch.LongTensor(x_)
 y = torch.LongTensor(y_)
-
 
 class Seq2Seq(nn.Module):
     def __init__(self, vocab_size, hidden_size):
@@ -69,14 +66,11 @@ class Seq2Seq(nn.Module):
         weight = next(self.parameters()).data
         return weight.new(self.n_layers, batch_size, self.hidden_size).zero_()
 
-
 seq2seq = Seq2Seq(vocab_size, 16)
 print(seq2seq)
 
-
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(seq2seq.parameters(), lr=1e-3)
-
 
 log = []
 for i in range(1000):
@@ -92,9 +86,7 @@ for i in range(1000):
         _, top1 = prediction.data.topk(1, 1)
         print([chr(c) for c in top1.squeeze().numpy().tolist()])
 
-
 import matplotlib.pyplot as plt
 plt.plot(log)
 plt.ylabel('cross entropy loss')
 plt.show()
-

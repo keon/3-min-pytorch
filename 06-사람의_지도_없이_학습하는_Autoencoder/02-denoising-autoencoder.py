@@ -25,11 +25,9 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 import numpy as np
-
-
+%matplotlib inline
 
 torch.manual_seed(1)    # reproducible
-
 
 # 하이퍼파라미터
 EPOCH = 10
@@ -37,7 +35,6 @@ BATCH_SIZE = 64
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 print("다음 기기로 학습합니다:", DEVICE)
-
 
 # Fashion MNIST 학습 데이터셋
 trainset = datasets.FashionMNIST(
@@ -53,7 +50,6 @@ train_loader = torch.utils.data.DataLoader(
     shuffle     = True,
     num_workers = 2
 )
-
 
 class Autoencoder(nn.Module):
     def __init__(self):
@@ -84,17 +80,14 @@ class Autoencoder(nn.Module):
         decoded = self.decoder(encoded)
         return encoded, decoded
 
-
 autoencoder = Autoencoder().to(DEVICE)
 optimizer = torch.optim.Adam(autoencoder.parameters(), lr=0.005)
 criterion = nn.MSELoss()
-
 
 def add_noise(img):
     noise = torch.randn(img.size()) * 0.2
     noisy_img = img + noise
     return noisy_img
-
 
 def train(autoencoder, train_loader):
     autoencoder.train()
@@ -115,12 +108,10 @@ def train(autoencoder, train_loader):
         avg_loss += loss.item()
     return avg_loss / len(train_loader)
 
-
 for epoch in range(1, EPOCH+1):
     loss = train(autoencoder, train_loader)
     print("[Epoch {}] loss:{}".format(epoch, loss))
     # 이번 예제에선 학습시 시각화를 건너 뜁니다
-
 
 # # 이미지 복원 시각화 하기
 
@@ -140,7 +131,6 @@ sample_data = sample_data.type(torch.FloatTensor)/255.
 original_x = sample_data[0]
 noisy_x = add_noise(original_x).to(DEVICE)
 _, recovered_x = autoencoder(noisy_x)
-
 
 f, a = plt.subplots(1, 3, figsize=(15, 15))
 
@@ -162,7 +152,5 @@ a[2].set_title('Recovered')
 a[2].imshow(recovered_img, cmap='gray')
 
 plt.show()
-
-
 
 

@@ -6,17 +6,15 @@
 from torchvision import datasets, transforms, utils
 from torch.utils import data
 
-
+%matplotlib inline
 import matplotlib.pyplot as plt
 import numpy as np
-
 
 # ## Fashion MNIST 데이터셋
 
 transform = transforms.Compose([
     transforms.ToTensor()
 ])
-
 
 trainset = datasets.FashionMNIST(
     root      = './.data/', 
@@ -31,7 +29,6 @@ testset = datasets.FashionMNIST(
     transform = transform
 )
 
-
 batch_size = 16
 
 train_loader = data.DataLoader(
@@ -43,10 +40,8 @@ test_loader = data.DataLoader(
     batch_size  = batch_size
 )
 
-
 dataiter       = iter(train_loader)
 images, labels = next(dataiter)
-
 
 # ## 멀리서 살펴보기
 img   = utils.make_grid(images, padding=0)
@@ -55,9 +50,7 @@ plt.figure(figsize=(10, 7))
 plt.imshow(np.transpose(npimg, (1,2,0)))
 plt.show()
 
-
 print(labels)
-
 
 CLASSES = {
     0: 'T-shirt/top',
@@ -77,7 +70,6 @@ for label in labels:
     index = label.item()
     print(CLASSES[index])
 
-
 # ## 가까이서 살펴보기
 idx = 1
 
@@ -87,4 +79,3 @@ plt.title(CLASSES[labels[idx].item()])
 print(item_npimg.shape)
 plt.imshow(item_npimg, cmap='gray')
 plt.show()
-

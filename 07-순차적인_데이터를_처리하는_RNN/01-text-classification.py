@@ -12,7 +12,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchtext import data, datasets
 
-
 # 하이퍼파라미터
 BATCH_SIZE = 64
 lr = 0.001
@@ -21,7 +20,6 @@ torch.manual_seed(42)
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 print("다음 기기로 학습합니다:", DEVICE)
-
 
 # 데이터 로딩하기
 print("데이터 로딩중...")
@@ -41,10 +39,8 @@ train_iter, val_iter, test_iter = data.BucketIterator.splits(
 vocab_size = len(TEXT.vocab)
 n_classes = 2
 
-
 print("[학습셋]: %d [검증셋]: %d [테스트셋]: %d [단어수]: %d [클래스] %d"
       % (len(trainset),len(valset), len(testset), vocab_size, n_classes))
-
 
 class BasicGRU(nn.Module):
     def __init__(self, n_layers, hidden_dim, n_vocab, embed_dim, n_classes, dropout_p=0.2):
@@ -85,7 +81,6 @@ def train(model, optimizer, train_iter):
         loss.backward()
         optimizer.step()
 
-
 def evaluate(model, val_iter):
     """evaluate model"""
     model.eval()
@@ -102,11 +97,9 @@ def evaluate(model, val_iter):
     avg_accuracy = 100.0 * corrects / size
     return avg_loss, avg_accuracy
 
-
 model = BasicGRU(1, 256, vocab_size, 128, n_classes, 0.5).to(DEVICE)
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 print(model)
-
 
 best_val_loss = None
 for e in range(1, EPOCHS+1):
@@ -122,8 +115,6 @@ for e in range(1, EPOCHS+1):
         torch.save(model.state_dict(), './snapshot/txtclassification.pt')
         best_val_loss = val_loss
 
-
 model.load_state_dict(torch.load('./snapshot/txtclassification.pt'))
 test_loss, test_acc = evaluate(model, test_iter)
 print('테스트 오차: %5.2f | 테스트 정확도: %5.2f' % (test_loss, test_acc))
-

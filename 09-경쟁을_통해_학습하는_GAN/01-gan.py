@@ -16,9 +16,7 @@ import torch.optim as optim
 from torchvision import transforms, datasets
 from torchvision.utils import save_image
 
-
 torch.manual_seed(1)    # reproducible
-
 
 # Hyper Parameters
 EPOCHS = 100
@@ -26,7 +24,6 @@ BATCH_SIZE = 100
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 print("Using Device:", DEVICE)
-
 
 # Fashion MNIST digits dataset
 trainset = datasets.FashionMNIST('./.data',
@@ -41,7 +38,6 @@ train_loader = torch.utils.data.DataLoader(
     batch_size  = BATCH_SIZE,
     shuffle     = True)
 
-
 # Discriminator
 D = nn.Sequential(
         nn.Linear(784, 256),
@@ -50,7 +46,6 @@ D = nn.Sequential(
         nn.LeakyReLU(0.2),
         nn.Linear(256, 1),
         nn.Sigmoid())
-
 
 # Generator 
 G = nn.Sequential(
@@ -62,7 +57,6 @@ G = nn.Sequential(
         nn.Tanh())
 
 
-
 # Device setting
 D = D.to(DEVICE)
 G = G.to(DEVICE)
@@ -71,7 +65,6 @@ G = G.to(DEVICE)
 criterion = nn.BCELoss()
 d_optimizer = optim.Adam(D.parameters(), lr=0.0002)
 g_optimizer = optim.Adam(G.parameters(), lr=0.0002)
-
 
 total_step = len(train_loader)
 for epoch in range(EPOCHS):
@@ -125,7 +118,6 @@ for epoch in range(EPOCHS):
             print('Epoch [{}/{}], Step [{}/{}], d_loss: {:.4f}, g_loss: {:.4f}, D(x): {:.2f}, D(G(z)): {:.2f}' 
                   .format(epoch, EPOCHS, i+1, total_step, d_loss.item(), g_loss.item(), 
                           real_score.mean().item(), fake_score.mean().item()))
-
 
 # ## 참고
 # 본 튜토리얼은 다음 자료를 참고하여 만들어졌습니다.
