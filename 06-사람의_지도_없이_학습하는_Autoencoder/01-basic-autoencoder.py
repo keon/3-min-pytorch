@@ -12,9 +12,11 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 import numpy as np
-%matplotlib inline
+
+
 
 torch.manual_seed(1)    # reproducible
+
 
 # Hyper Parameters
 EPOCH = 10
@@ -22,6 +24,7 @@ BATCH_SIZE = 64
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 print("Using Device:", DEVICE)
+
 
 # Fashion MNIST digits dataset
 trainset = datasets.FashionMNIST(
@@ -36,6 +39,7 @@ train_loader = torch.utils.data.DataLoader(
     shuffle     = True,
     num_workers = 2
 )
+
 
 class Autoencoder(nn.Module):
     def __init__(self):
@@ -66,13 +70,16 @@ class Autoencoder(nn.Module):
         decoded = self.decoder(encoded)
         return encoded, decoded
 
+
 autoencoder = Autoencoder().to(DEVICE)
 optimizer = torch.optim.Adam(autoencoder.parameters(), lr=0.005)
 criterion = nn.MSELoss()
 
+
 # original data (first row) for viewing
 view_data = trainset.train_data[:5].view(-1, 28*28)
 view_data = view_data.type(torch.FloatTensor)/255.
+
 
 def train(autoencoder, train_loader):
     autoencoder.train()
@@ -110,6 +117,7 @@ for epoch in range(1, EPOCH+1):
         a[1][i].set_xticks(()); a[1][i].set_yticks(())
     plt.show()
 
+
 # # 잠재변수 들여다보기
 
 # visualize in 3D plot
@@ -118,6 +126,7 @@ view_data = view_data.type(torch.FloatTensor)/255.
 test_x = view_data.to(DEVICE)
 encoded_data, _ = autoencoder(test_x)
 encoded_data = encoded_data.to("cpu")
+
 
 CLASSES = {
     0: 'T-shirt/top',
@@ -150,3 +159,4 @@ ax.set_xlim(X.min(), X.max())
 ax.set_ylim(Y.min(), Y.max())
 ax.set_zlim(Z.min(), Z.max())
 plt.show()
+

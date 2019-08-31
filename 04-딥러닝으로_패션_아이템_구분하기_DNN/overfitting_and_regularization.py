@@ -11,11 +11,14 @@ import torch.optim as optim
 import torch.nn.functional as F
 from torchvision import transforms, datasets
 
+
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 
+
 EPOCHS = 50
 BATCH_SIZE = 64
+
 
 # ## 데이터셋에 노이즈 추가하기
 # ![original.png](./assets/original.png)
@@ -39,6 +42,7 @@ test_loader = torch.utils.data.DataLoader(
                        transforms.Normalize((0.1307,), (0.3081,))
                    ])),
     batch_size=BATCH_SIZE, shuffle=True)
+
 
 # ## 뉴럴넷으로 Fashion MNIST 학습하기
 # 입력 `x` 는 `[배치크기, 색, 높이, 넓이]`로 이루어져 있습니다.
@@ -69,6 +73,7 @@ class Net(nn.Module):
         x = self.fc3(x)
         return x
 
+
 # ## 모델 준비하기 
 # `to()` 함수는 모델의 파라미터들을 지정한 곳으로 보내는 역할을 합니다.
 # 일반적으로 CPU 1개만 사용할 경우 필요는 없지만,
@@ -78,6 +83,7 @@ class Net(nn.Module):
 
 model        = Net(dropout_p=0.2).to(DEVICE)
 optimizer    = optim.SGD(model.parameters(), lr=0.01)
+
 
 # ## 학습하기
 
@@ -90,6 +96,7 @@ def train(model, train_loader, optimizer):
         loss = F.cross_entropy(output, target)
         loss.backward()
         optimizer.step()
+
 
 # ## 테스트하기
 def evaluate(model, test_loader):
@@ -111,6 +118,7 @@ def evaluate(model, test_loader):
     test_accuracy = 100. * correct / len(test_loader.dataset)
     return test_loss, test_accuracy
 
+
 # ## 코드 돌려보기
 # 자, 이제 모든 준비가 끝났습니다. 코드를 돌려서 실제로 훈련이 되는지 확인해봅시다!
 
@@ -120,3 +128,4 @@ for epoch in range(1, EPOCHS + 1):
     
     print('[{}] Test Loss: {:.4f}, Accuracy: {:.2f}%'.format(
           epoch, test_loss, test_accuracy))
+

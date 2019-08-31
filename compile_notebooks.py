@@ -34,9 +34,13 @@ def main():
         script = re.sub(comment_pattern, "", script)
         script = re.sub(matplotlib_pattern, "", script)
         pypath = (base + resources.get('output_extension', '.txt'))
-        print("Saving script %s" % pypath)
+
+        if os.path.exists(pypath):
+            os.remove(pypath)
+            print("Cleaned existing script %s" % pypath)
         with io.open(pypath, 'w', encoding='utf-8') as f:
             f.write(script)
+        print("Saved script %s" % pypath)
 
 
 if __name__ == "__main__":
