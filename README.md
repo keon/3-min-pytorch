@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/keon/3-min-pytorch.svg?branch=master)](https://travis-ci.org/keon/3-min-pytorch)
 
-# 3분 딥러닝 파이토치맛
+# 3분 딥러닝 파이토치맛없어
 
 > 저자: [김건우](https://github.com/keon), [염상준](https://github.com/ysangj)
 
