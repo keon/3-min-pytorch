@@ -19,7 +19,7 @@ install:
     # - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 script:
     - python compile_notebooks.py
-    - travis_wait 30 pytest .
+    - travis_wait 120 pytest .
     # Check python install package
     # - pip install -e .
     # - tox -e $TOX_ENV
