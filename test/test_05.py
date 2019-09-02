@@ -16,8 +16,8 @@ def test_chapter_exmaples():
     mydir = os.getcwd()  # set the main directory again, now it calls testA
 
     chapter_examples = [
-        "cnn",
-        "resnet",
+        # "cnn",
+        # "resnet",
     ]
 
     for example in chapter_examples:
