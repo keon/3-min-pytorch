@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 5.1 CNN으로 패션 아이템 구분하기
+# # CNN으로 패션 아이템 구분하기
 # Convolutional Neural Network (CNN) 을 이용하여 패션아이템 구분 성능을 높여보겠습니다.
 
 import torch
@@ -11,7 +11,6 @@ import torch.nn.functional as F
 from torchvision import transforms, datasets
 
 
-torch.manual_seed(42)
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 
@@ -90,7 +89,7 @@ def train(model, train_loader, optimizer, epoch):
 
 # ## 테스트하기
 
-def test(model, test_loader):
+def evaluate(model, test_loader):
     model.eval()
     test_loss = 0
     correct = 0
@@ -99,11 +98,11 @@ def test(model, test_loader):
             data, target = data.to(DEVICE), target.to(DEVICE)
             output = model(data)
 
-            # sum up batch loss
+            # 배치 오차를 합산
             test_loss += F.cross_entropy(output, target,
-                                         size_average=False).item()
+                                         reduction='sum').item()
 
-            # get the index of the max log-probability
+            # 가장 높은 값을 가진 인덱스가 바로 예측값
             pred = output.max(1, keepdim=True)[1]
             correct += pred.eq(target.view_as(pred)).sum().item()
 
@@ -117,7 +116,7 @@ def test(model, test_loader):
 
 for epoch in range(1, EPOCHS + 1):
     train(model, train_loader, optimizer, epoch)
-    test_loss, test_accuracy = test(model, test_loader)
+    test_loss, test_accuracy = evaluate(model, test_loader)
     
     print('[{}] Test Loss: {:.4f}, Accuracy: {:.2f}%'.format(
           epoch, test_loss, test_accuracy))
