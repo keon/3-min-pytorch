@@ -10,8 +10,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import random
-
-
+import matplotlib.pyplot as plt
 
 
 vocab_size = 256  # 총 아스키 코드 개수
@@ -48,19 +47,19 @@ class Seq2Seq(nn.Module):
 
         # 디코더에 들어갈 입력
         decoder_state = encoder_state
-        decoder_input = torch.LongTensor([[0]])
+        decoder_input = torch.LongTensor([0])
         
         # 디코더 (Decoder)
         outputs = []
         
         for i in range(targets.size()[0]):
-            decoder_input = self.embedding(decoder_input)
+            decoder_input = self.embedding(decoder_input).unsqueeze(1)
             decoder_output, decoder_state = self.decoder(decoder_input, decoder_state)
             projection = self.project(decoder_output)
             outputs.append(projection)
             
             #티처 포싱(Teacher Forcing) 사용
-            decoder_input = torch.LongTensor([[targets[i]]])
+            decoder_input = torch.LongTensor([targets[i]])
 
         outputs = torch.stack(outputs).squeeze()
         return outputs
@@ -93,7 +92,6 @@ for i in range(1000):
         print([chr(c) for c in top1.squeeze().numpy().tolist()])
 
 
-import matplotlib.pyplot as plt
 plt.plot(log)
 plt.ylabel('cross entropy loss')
 plt.show()

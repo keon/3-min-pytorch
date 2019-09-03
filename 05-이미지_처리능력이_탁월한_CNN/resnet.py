@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 5.2 신경망 깊게 쌓아 컬러 데이터셋에 적용하기
+# # 신경망 깊게 쌓아 컬러 데이터셋에 적용하기
 # Convolutional Neural Network (CNN) 을 쌓아올려 딥한 러닝을 해봅시다.
 
 import torch
@@ -11,7 +11,6 @@ import torch.nn.functional as F
 from torchvision import transforms, datasets, models
 
 
-torch.manual_seed(42)
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 
@@ -131,7 +130,7 @@ def train(model, train_loader, optimizer, epoch):
 
 # ## 테스트하기
 
-def test(model, test_loader):
+def evaluate(model, test_loader):
     model.eval()
     test_loss = 0
     correct = 0
@@ -140,11 +139,11 @@ def test(model, test_loader):
             data, target = data.to(DEVICE), target.to(DEVICE)
             output = model(data)
 
-            # sum up batch loss
+            # 배치 오차를 합산
             test_loss += F.cross_entropy(output, target,
-                                         size_average=False).item()
+                                         reduction='sum').item()
 
-            # get the index of the max log-probability
+            # 가장 높은 값을 가진 인덱스가 바로 예측값
             pred = output.max(1, keepdim=True)[1]
             correct += pred.eq(target.view_as(pred)).sum().item()
 
@@ -159,7 +158,7 @@ def test(model, test_loader):
 for epoch in range(1, EPOCHS + 1):
     scheduler.step()
     train(model, train_loader, optimizer, epoch)
-    test_loss, test_accuracy = test(model, test_loader)
+    test_loss, test_accuracy = evaluate(model, test_loader)
     
     print('[{}] Test Loss: {:.4f}, Accuracy: {:.2f}%'.format(
           epoch, test_loss, test_accuracy))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 6.2 오토인코더로 망가진 이미지 복원하기
+# # 오토인코더로 망가진 이미지 복원하기
 # 잡음제거 오토인코더(Denoising Autoencoder)는 2008년 몬트리올 대학에서 발표한 논문
 # ["Extracting and Composing Robust Features with Denoising AutoEncoder"](http://www.cs.toronto.edu/~larocheh/publications/icml-2008-denoising-autoencoders.pdf)
 # 에서 처음 제안되었습니다.
@@ -22,13 +22,7 @@ from torch import nn, optim
 from torchvision import transforms, datasets
 
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm
 import numpy as np
-
-
-
-torch.manual_seed(1)    # reproducible
 
 
 # 하이퍼파라미터
@@ -144,7 +138,7 @@ _, recovered_x = autoencoder(noisy_x)
 
 f, a = plt.subplots(1, 3, figsize=(15, 15))
 
-# 시각화를 위해 numpy 행렬로 바꿔줍니다.
+# 시각화를 위해 넘파이 행렬로 바꿔줍니다.
 original_img = np.reshape(original_x.to("cpu").data.numpy(), (28, 28))
 noisy_img = np.reshape(noisy_x.to("cpu").data.numpy(), (28, 28))
 recovered_img = np.reshape(recovered_x.to("cpu").data.numpy(), (28, 28))
@@ -162,7 +156,4 @@ a[2].set_title('Recovered')
 a[2].imshow(recovered_img, cmap='gray')
 
 plt.show()
-
-
-
 

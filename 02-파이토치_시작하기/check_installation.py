@@ -5,7 +5,7 @@ required_packages = [
     ("torchvision", "토치비전"),
     ("torchtext", "토치텍스트"),
     ("numpy", "넘파이"), 
-    ("matplotlib", "맷플랏립"),
+    ("matplotlib", "맷플롯립"),
     ("sklearn", "사이킷런"),
 ]
 installed_packages = []
