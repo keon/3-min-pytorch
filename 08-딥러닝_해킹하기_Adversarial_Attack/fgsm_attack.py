@@ -16,7 +16,6 @@ from PIL import Image
 import json
 
 
-
 import matplotlib.pyplot as plt
 
 
