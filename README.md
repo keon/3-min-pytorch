@@ -46,9 +46,9 @@
   * [프로젝트 1] [영화 리뷰 감정 분석](07-순차적인_데이터를_처리하는_RNN/01-text-classification.ipynb)
   * [프로젝트 2] [Seq2Seq 기계 번역](07-순차적인_데이터를_처리하는_RNN/02-sequence-to-sequence.ipynb)
   * 더 보기
-8. [딥러닝 해킹하기 Adversarial Attack](08-딥러닝_해킹하기_Adversarial_Attack) - Adversarial Attack
+8. [딥러닝을 해킹하는 Adversarial Attack](08-딥러닝을_해킹하는_Adversarial_Attack) - Adversarial Attack
   * [개념] Adversarial Attack 이란?
-  * [프로젝트 1] [FGSM 공격](08-딥러닝_해킹하기_Adversarial_Attack/01-fgsm-attack.ipynb)
+  * [프로젝트 1] [FGSM 공격](08-딥러닝을_해킹하는_Adversarial_Attack/01-fgsm-attack.ipynb)
   * 더 보기
 9. [경쟁하며 학습하는 GAN](09-경쟁하며_학습하는_GAN) - GAN을 이용하여 새로운 패션 아이템을 만들어봅니다.
   * [개념] GAN 기초

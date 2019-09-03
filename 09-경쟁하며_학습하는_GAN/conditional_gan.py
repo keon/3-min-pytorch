@@ -14,10 +14,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-torch.manual_seed(1)    # reproducible
-
-
-# Hyper Parameters
+# 하이퍼파라미터
 EPOCHS = 300
 BATCH_SIZE = 100
 USE_CUDA = torch.cuda.is_available()
@@ -25,7 +22,7 @@ DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
 print("Using Device:", DEVICE)
 
 
-# Fashion MNIST digits dataset
+# Fashion MNIST 데이터셋
 trainset = datasets.FashionMNIST('./.data',
     train=True,
     download=True,
@@ -44,7 +41,7 @@ def one_hot_embedding(labels, num_classes):
     return y[labels]
 
 
-# Discriminator
+# 생성자 (Generator)
 D = nn.Sequential(
         nn.Linear(784, 256),
         nn.LeakyReLU(0.2),
@@ -54,7 +51,7 @@ D = nn.Sequential(
         nn.Sigmoid())
 
 
-# Generator 
+# 판별자 (Discriminator)
 G = nn.Sequential(
         nn.Linear(64 + 10, 256),
         nn.ReLU(),
@@ -64,12 +61,12 @@ G = nn.Sequential(
         nn.Tanh())
 
 
-
-# Device setting
+# 모델의 가중치를 지정한 장치로 보내기
 D = D.to(DEVICE)
 G = G.to(DEVICE)
 
-# Binary cross entropy loss and optimizer
+# 이진 크로스 엔트로피 (Binary cross entropy) 오차 함수와
+# 생성자와 판별자를 최적화할 Adam 모듈
 criterion = nn.BCELoss()
 d_optimizer = optim.Adam(D.parameters(), lr=0.0002)
 g_optimizer = optim.Adam(G.parameters(), lr=0.0002)
@@ -118,16 +115,13 @@ for epoch in range(EPOCHS):
         g_loss.backward()
         g_optimizer.step()
         
-        if (i+1) % 200 == 0:
-            print('Epoch [{}/{}], Step [{}/{}], d_loss: {:.4f}, g_loss: {:.4f}, D(x): {:.2f}, D(G(z)): {:.2f}' 
-                  .format(epoch,
-                          EPOCHS,
-                          i+1,
-                          total_step,
-                          d_loss.item(),
-                          g_loss.item(), 
-                          real_score.mean().item(),
-                          fake_score.mean().item()))
+    print('Epoch [{}/{}], d_loss: {:.4f}, g_loss: {:.4f}, D(x): {:.2f}, D(G(z)): {:.2f}' 
+          .format(epoch,
+                  EPOCHS,
+                  d_loss.item(),
+                  g_loss.item(), 
+                  real_score.mean().item(),
+                  fake_score.mean().item()))
 
 
 for i in range(100):
