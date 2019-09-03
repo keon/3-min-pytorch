@@ -4,7 +4,7 @@ from importlib import import_module
 
 
 # setup path
-chapter_name = "03-파이토치로_구현하는_신경망_ANN"
+chapter_name = "03-파이토치로_구현하는_ANN"
 dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." , chapter_name)
 sys.path.append(dir_path)
 

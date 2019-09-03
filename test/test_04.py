@@ -4,7 +4,7 @@ from importlib import import_module
 
 
 # setup path
-chapter_name = "04-딥러닝으로_패션_아이템_구분하기_DNN"
+chapter_name = "04-패션_아이템을_구분하는_DNN"
 dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." , chapter_name)
 sys.path.append(dir_path)
 
