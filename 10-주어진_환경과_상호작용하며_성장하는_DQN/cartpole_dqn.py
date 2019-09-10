@@ -93,7 +93,7 @@ for e in range(1, EPISODES+1):
         action = agent.act(state)
         next_state, reward, done, _ = env.step(action.item())
 
-        # negative reward when attempt ends
+        # 게임이 끝났을 경우 마이너스 보상주기
         if done:
             reward = -1
 
