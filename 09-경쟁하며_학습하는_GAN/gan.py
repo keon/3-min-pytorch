@@ -3,8 +3,6 @@
 
 # # GAN으로 새로운 패션아이템 생성하기
 # *GAN을 이용하여 새로운 패션 아이템을 만들어봅니다*
-# 이 프로젝트는 최윤제님의 파이토치 튜토리얼 사용 허락을 받아 참고했습니다.
-# * [yunjey/pytorch-tutorial](https://github.com/yunjey/pytorch-tutorial) - MIT License
 
 import os
 import torch
@@ -24,23 +22,26 @@ EPOCHS = 500
 BATCH_SIZE = 100
 USE_CUDA = torch.cuda.is_available()
 DEVICE = torch.device("cuda" if USE_CUDA else "cpu")
-print("Using Device:", DEVICE)
+print("다음 장치를 사용합니다:", DEVICE)
 
 
 # 학습에 필요한 데이터셋을 로딩합니다. 
 
 # Fashion MNIST 데이터셋
-trainset = datasets.FashionMNIST('./.data',
+trainset = datasets.FashionMNIST(
+    './.data',
     train=True,
     download=True,
     transform=transforms.Compose([
        transforms.ToTensor(),
        transforms.Normalize((0.5,), (0.5,))
-    ]))
+    ]),
+)
 train_loader = torch.utils.data.DataLoader(
-    dataset     = trainset,
-    batch_size  = BATCH_SIZE,
-    shuffle     = True)
+    dataset = trainset,
+    batch_size = BATCH_SIZE,
+    shuffle = True,
+)
 
 
 # 생성자는 64차원의 랜덤한 텐서를 입력받아 이에 행렬곱(Linear)과 활성화 함수(ReLU, Tanh) 연산을 실행합니다. 생성자의 결과값은 784차원, 즉 Fashion MNIST 속의 이미지와 같은 차원의 텐서입니다.
@@ -91,12 +92,12 @@ for epoch in range(EPOCHS):
         real_labels = torch.ones(BATCH_SIZE, 1).to(DEVICE)
         fake_labels = torch.zeros(BATCH_SIZE, 1).to(DEVICE)
         
-        # 판별자가 진짜 이미지를 진짜로 인식하는 오차를 예산
+        # 판별자가 진짜 이미지를 진짜로 인식하는 오차를 계산
         outputs = D(images)
         d_loss_real = criterion(outputs, real_labels)
         real_score = outputs
         
-        # 무작위 텐서로 가짜 이미지 생성
+        # 생성자와 무작위 텐서로 가짜 이미지 생성
         z = torch.randn(BATCH_SIZE, 64).to(DEVICE)
         fake_images = G(z)
         
@@ -105,9 +106,12 @@ for epoch in range(EPOCHS):
         d_loss_fake = criterion(outputs, fake_labels)
         fake_score = outputs
         
-        # 진짜와 가짜 이미지를 갖고 낸 오차를 더해서 판별자의 오차를 계산 후 학습
+        # 진짜와 가짜 이미지를 갖고 낸 오차를 더해서 판별자의 오차를 계산
         d_loss = d_loss_real + d_loss_fake
+        
+        # 역전파 알고리즘으로 판별자 모델의 학습을 진행
         d_optimizer.zero_grad()
+        g_optimizer.zero_grad()
         d_loss.backward()
         d_optimizer.step()
         
@@ -123,17 +127,21 @@ for epoch in range(EPOCHS):
         g_optimizer.step()
         
     # 학습 진행 알아보기
-    print('Epoch [{}/{}], d_loss: {:.4f}, g_loss: {:.4f}, D(x): {:.2f}, D(G(z)): {:.2f}' 
+    print('이폭 [{}/{}] d_loss:{:.4f} g_loss: {:.4f} D(x):{:.2f} D(G(z)):{:.2f}' 
           .format(epoch, EPOCHS, d_loss.item(), g_loss.item(), 
                   real_score.mean().item(), fake_score.mean().item()))
 
 
 # 학습이 끝난 생성자의 결과물을 한번 확인해 보겠습니다.
 
+# 생성자가 만든 이미지 시각화하기
 z = torch.randn(BATCH_SIZE, 64).to(DEVICE)
 fake_images = G(z)
-for i in range(10):
+for i in range(64):
     fake_images_img = np.reshape(fake_images.data.cpu().numpy()[i],(28, 28))
     plt.imshow(fake_images_img, cmap = 'gray')
     plt.show()
 
+
+# 이 프로젝트는 최윤제님의 파이토치 튜토리얼 사용 허락을 받아 참고했습니다.
+# * [yunjey/pytorch-tutorial](https://github.com/yunjey/pytorch-tutorial) - MIT License
