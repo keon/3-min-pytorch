@@ -70,7 +70,6 @@ class Seq2Seq(nn.Module):
 
 
 seq2seq = Seq2Seq(vocab_size, 16)
-print(seq2seq)
 
 
 criterion = nn.CrossEntropyLoss()

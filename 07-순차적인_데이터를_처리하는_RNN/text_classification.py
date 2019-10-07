@@ -104,7 +104,6 @@ def evaluate(model, val_iter):
 
 model = BasicGRU(1, 256, vocab_size, 128, n_classes, 0.5).to(DEVICE)
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-print(model)
 
 
 best_val_loss = None
