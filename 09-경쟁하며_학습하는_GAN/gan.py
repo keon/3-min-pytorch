@@ -30,17 +30,20 @@ print("Using Device:", DEVICE)
 # 학습에 필요한 데이터셋을 로딩합니다. 
 
 # Fashion MNIST 데이터셋
-trainset = datasets.FashionMNIST('./.data',
+trainset = datasets.FashionMNIST(
+    './.data',
     train=True,
     download=True,
     transform=transforms.Compose([
        transforms.ToTensor(),
        transforms.Normalize((0.5,), (0.5,))
-    ]))
+    ])
+)
 train_loader = torch.utils.data.DataLoader(
     dataset     = trainset,
     batch_size  = BATCH_SIZE,
-    shuffle     = True)
+    shuffle     = True
+)
 
 
 # 생성자는 64차원의 랜덤한 텐서를 입력받아 이에 행렬곱(Linear)과 활성화 함수(ReLU, Tanh) 연산을 실행합니다. 생성자의 결과값은 784차원, 즉 Fashion MNIST 속의 이미지와 같은 차원의 텐서입니다.
@@ -105,9 +108,12 @@ for epoch in range(EPOCHS):
         d_loss_fake = criterion(outputs, fake_labels)
         fake_score = outputs
         
-        # 진짜와 가짜 이미지를 갖고 낸 오차를 더해서 판별자의 오차를 계산 후 학습
+        # 진짜와 가짜 이미지를 갖고 낸 오차를 더해서 판별자의 오차 계산
         d_loss = d_loss_real + d_loss_fake
+
+        # 역전파 알고리즘으로 판별자 모델의 학습을 진행
         d_optimizer.zero_grad()
+        g_optimizer.zero_grad()
         d_loss.backward()
         d_optimizer.step()
         
