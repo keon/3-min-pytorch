@@ -4,7 +4,7 @@ from importlib import import_module
 
 
 # setup path
-chapter_name = "06-사람의_지도_없이_학습하는_오토인코더"
+chapter_name = "08-딥러닝을_해킹하는_Adversarial_Attack"
 dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." , chapter_name)
 sys.path.append(dir_path)
 
@@ -16,8 +16,7 @@ def test_chapter_exmaples():
     mydir = os.getcwd()  # set the main directory again, now it calls testA
 
     chapter_examples = [
-        # "basic_autoencoder",
-        # "denoising_autoencoder",
+        "cartpole_dqn",
     ]
 
     for example in chapter_examples:
