@@ -108,7 +108,7 @@ def evaluate(model, test_loader):
             data, target = data.to(DEVICE), target.to(DEVICE)
             output = model(data)
             test_loss += F.cross_entropy(output, target,
-                                         size_average=False).item()
+                                         reduction='sum').item()
             
             # 맞춘 갯수 계산
             pred = output.max(1, keepdim=True)[1]

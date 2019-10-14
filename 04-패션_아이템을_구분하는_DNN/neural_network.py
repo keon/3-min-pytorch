@@ -111,7 +111,7 @@ def evaluate(model, test_loader):
 
             # 모든 오차 더하기
             test_loss += F.cross_entropy(output, target,
-                                         size_average=False).item()
+                                         reduction='sum').item()
             
             # 가장 큰 값을 가진 클래스가 모델의 예측입니다.
             # 예측과 정답을 비교하여 일치할 경우 correct에 1을 더합니다.
