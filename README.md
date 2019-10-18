@@ -1,8 +1,28 @@
 [![Build Status](https://travis-ci.org/keon/3-min-pytorch.svg?branch=master)](https://travis-ci.org/keon/3-min-pytorch)
 
-# 3분 딥러닝 파이토치맛
+# 펭귄브로의 3분 딥러닝, 파이토치맛
+[PyTorch 코드로 맛보는 CNN, GAN, RNN, DQN, Autoencoder, ResNet, Seq2Seq, Adversarial Attack](https://book.naver.com/bookdb/book_detail.nhn?bid=15559613)
 
 > 저자: [김건우](https://github.com/keon), [염상준](https://github.com/ysangj)
+
+파이토치 코드로 맛보는 딥러닝 핵심 개념! 
+
+이 책은 파이토치로 인공지능을 구현하는 방법을 알려줍니다. 인공지능 입문자를 위한 기초 지식과 최신 인공지능 구현 방법인 인공신경망 기술을 사례를 통해 알아봅니다. 지도학습 방식의 ANN, DNN, CNN, RNN을 비롯해, 비지도학습 방식의 AE와 GAN 그리고 강화학습 DQN을 직접 구현합니다. 딥러닝의 약점을 이용해서 해킹하는 방법을 배우는 등 각 장에서 소개한 신경망으로 재미있는 응용 예제를 다룹니다.
+
+<a href="http://www.yes24.com/24/goods/57617933">
+<p align="center">
+<img src="http://www.hanbit.co.kr/data/books/B7193109877_l.jpg" alt="3분 딥러닝 파이토치맛" title="3분 딥러닝 파이토치맛" width="350"/>
+</p>
+</a>
+
+- [네이버책](https://book.naver.com/bookdb/book_detail.nhn?bid=15559613), 
+[yes24](http://www.yes24.com/Product/Goods/80218706),
+[교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791162242278&fbclid=IwAR1RuBmj9OKXmqi291yddZ53yVkPl3bkOqJKgGbu0tKDlq8MijjN7xiUAvs#N),
+[영풍문고](http://www.ypbooks.co.kr/book.yp?bookcd=100983591)
+[인터파크도서](http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=318434586),
+[알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K002636987),
+[반디앤루니스](http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4284510&compId=101) 등에서 만나볼 수 있습니다. 
+
 
 ## 요구사항
 
