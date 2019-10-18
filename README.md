@@ -15,7 +15,13 @@
 </p>
 </a>
 
-- [네이버책](https://book.naver.com/bookdb/book_detail.nhn?bid=15559613), [인터파크도서](http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.shopNo=0000400000&sc.prdNo=276613282&sc.saNo=003002001&bid1=search&bid2=product&bid3=title&bid4=001), [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791162242278&fbclid=IwAR1RuBmj9OKXmqi291yddZ53yVkPl3bkOqJKgGbu0tKDlq8MijjN7xiUAvs#N), [yes24](http://www.yes24.com/24/goods/57617933), [알라딘](http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=125725712), [반디북US](http://www.bandibookus.com/front/product/detailProduct.do?prodId=4129910) 등에서 만나볼 수 있습니다. 
+- [네이버책](https://book.naver.com/bookdb/book_detail.nhn?bid=15559613), 
+[yes24](http://www.yes24.com/Product/Goods/80218706),
+[교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791162242278&fbclid=IwAR1RuBmj9OKXmqi291yddZ53yVkPl3bkOqJKgGbu0tKDlq8MijjN7xiUAvs#N),
+[영풍문고](http://www.ypbooks.co.kr/book.yp?bookcd=100983591)
+[인터파크도서](http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=318434586),
+[알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K002636987),
+[반디앤루니스](http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4284510&compId=101) 등에서 만나볼 수 있습니다. 
 
 
 ## 요구사항
