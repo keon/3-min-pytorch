@@ -18,9 +18,9 @@
 - [네이버책](https://book.naver.com/bookdb/book_detail.nhn?bid=15559613), 
 [yes24](http://www.yes24.com/Product/Goods/80218706),
 [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791162242278&fbclid=IwAR1RuBmj9OKXmqi291yddZ53yVkPl3bkOqJKgGbu0tKDlq8MijjN7xiUAvs#N),
+[알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K002636987),
 [영풍문고](http://www.ypbooks.co.kr/book.yp?bookcd=100983591)
 [인터파크도서](http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=318434586),
-[알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K002636987),
 [반디앤루니스](http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4284510&compId=101) 등에서 만나볼 수 있습니다. 
 
 
