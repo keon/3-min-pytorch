@@ -9,7 +9,7 @@
 
 이 책은 파이토치로 인공지능을 구현하는 방법을 알려줍니다. 인공지능 입문자를 위한 기초 지식과 최신 인공지능 구현 방법인 인공신경망 기술을 사례를 통해 알아봅니다. 지도학습 방식의 ANN, DNN, CNN, RNN을 비롯해, 비지도학습 방식의 AE와 GAN 그리고 강화학습 DQN을 직접 구현합니다. 딥러닝의 약점을 이용해서 해킹하는 방법을 배우는 등 각 장에서 소개한 신경망으로 재미있는 응용 예제를 다룹니다.
 
-<a href="http://www.yes24.com/24/goods/57617933">
+<a href="http://www.yes24.com/Product/Goods/80218706">
 <p align="center">
 <img src="http://www.hanbit.co.kr/data/books/B7193109877_l.jpg" alt="3분 딥러닝 파이토치맛" title="3분 딥러닝 파이토치맛" width="350"/>
 </p>
