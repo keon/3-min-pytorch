@@ -94,12 +94,12 @@ def train(autoencoder, train_loader):
     autoencoder.train()
     avg_loss = 0
     for step, (x, label) in enumerate(train_loader):
-        x = add_noise(x)  # 입력에 노이즈 더하기
-        x = x.view(-1, 28*28).to(DEVICE)
+        noisy_x = add_noise(x)  # 입력에 노이즈 더하기
+        noisy_x = noisy_x.view(-1, 28*28).to(DEVICE)
         y = x.view(-1, 28*28).to(DEVICE)
-        
+
         label = label.to(DEVICE)
-        encoded, decoded = autoencoder(x)
+        encoded, decoded = autoencoder(noisy_x)
 
         loss = criterion(decoded, y)
         optimizer.zero_grad()

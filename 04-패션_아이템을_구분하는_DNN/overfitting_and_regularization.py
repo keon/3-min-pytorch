@@ -25,7 +25,7 @@ BATCH_SIZE = 64
 # ![horizontalflip.png](./assets/horizontalflip.png)
 
 train_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('./.data',
+    datasets.FashionMNIST('./.data',
                    train=True,
                    download=True,
                    transform=transforms.Compose([
@@ -35,7 +35,7 @@ train_loader = torch.utils.data.DataLoader(
                    ])),
     batch_size=BATCH_SIZE, shuffle=True)
 test_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('./.data',
+    datasets.FashionMNIST('./.data',
                    train=False, 
                    transform=transforms.Compose([
                        transforms.ToTensor(),
