@@ -93,7 +93,7 @@ for epoch in range(epochs):
 
 
 model.eval()
-test_loss = criterion(model(x_test).squeeze(), y_test) 
+test_loss = criterion(torch.squeeze(model(x_test)), y_test)
 print('After Training, test loss is {}'.format(test_loss.item()))
 
 
